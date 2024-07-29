@@ -31,28 +31,28 @@ Weightage of everything for grades
 ## CS339 
 ### Abstractions and Paradigms of programming (Tentative):
 
--Endsem: 40%
--Midsem: 30%
--Quizzes: 20%
--Attendance: 5%, <70% DX
--Participation: 5%
+- Endsem: 40%
+- Midsem: 30%
+- Quizzes: 20%
+- Attendance: 5%, <70% DX
+- Participation: 5%
 
-##CS355
+## CS355
 
-###Paradigms of programming Lab(Tentative):
+### Paradigms of programming Lab(Tentative):
 
--Attendance - 2 (7 out of 8)
--Practice - 3(7  out of 8)
--Endsem - 35%
--Midsem - 30%
+- Attendance - 2 (7 out of 8)
+- Practice - 3(7  out of 8)
+- Endsem - 35%
+- Midsem - 30%
 
 ## CS348
 
 ### Networks
 
-Endsem - 35%
-Midsem - 25%
-Inclass SAFE Quiz(oops attendance) - 10% (best 80%)
-Assignments - 20%
-Class Participation(Attendance + discussion) - 7% + 3%
+- Endsem - 35%
+- Midsem - 25%
+- Inclass SAFE Quiz(oops attendance) - 10% (best 80%)
+- Assignments - 20%
+- Class Participation(Attendance + discussion) - 7% + 3%
 
