@@ -4,13 +4,17 @@ Summary of what happened (topics covered) in classes this week could go here
 
 ## Monday
 
+CS 348 - Course logistics, History of ARPANET, definition of Protocol, Defined Physical, Data Link and Network Layers
+
+CS 339 - Course intro, 3 parts including Functional Paradigm, Object-Oriented Paradigm, Logic Paradigm, Motivation and logistic, First Homework
+
 ## Tuesday
 
-## Thursday
+CS 348 - Simplex and Duplex channels, Congestion Control, Reasons for packet drop, OSI-5 model including Transport layer (TCP and UDP), Application layer
 
-## Friday
+CS 339 - Introduction to Scheme PL, Elements of a PL - Primitive,Combination,Abstraction, Procedure and Environment
 
-## Monday
+
 
 # Timetable
 
@@ -22,7 +26,7 @@ Summary of what happened (topics covered) in classes this week could go here
 | 11:35 am - 12:30 pm |                 |                 |                 | CS 339 (LH 101) |                |
 | 9:35 am - 11:00 am  |                 |                 | Minor           |                 | Minor          |
 | 11:05 am - 12:30 pm |                 |                 |                 |                 |                |
-| 2:00 pm - 4:55 pm   |                 |                 |                 |                 |                |
+| 2:00 pm - 4:55 pm   | CS 355 (CC)     |                 |                 | CS 378 (CC)     |                |
 
 # Course Policies
 

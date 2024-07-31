@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage{blindtext}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subfig}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\lstset{language=C++,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    morecomment=[l][\color{magenta}]{\#}
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=green,
+    urlcolor=red
+}
+\usetikzlibrary{quotes, angles, decorations.markings, intersections}
+\usetikzlibrary{calc,patterns,angles,quotes, 3d, intersections, positioning, shapes, automata, positioning}
+\newcommand{\tbox}[1]{\noindent\fbox{\parbox{\textwidth}{#1}}}
+\title{OS CS219 Notes}
+\author{}
+\date{\today}
+\begin{document}
+\maketitle
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 1}
+    \end{center}
+}
+
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 2}
+    \end{center}
+}
+
+
+\section{IP address}
+
+Each connected device has an unique identifier to describe it.
+This identifier is known as the IP address of a device. 
+
+The IP address has a hierarchical structure. An example of an IP address is `72.85.5.25'. This can be thought of 
+as being similar to a postal address where the country of your address is the highest level at which location is specified. 
+After this the state, city, area narrow down your location more and the message travels in an organised way from one `level' to another.
+
+
+\section{Message}
+
+
+A message can be descibed in various granularities.
+\begin{itemize}
+    \item \textbf{Level 1:} Frame
+    \item \textbf{Level 2:} Symbol
+    \item \textbf{Level 3:} Packet
+    \item \textbf{Level 4:} TCP $\rightarrow$ segment, UDP $\rightarrow$ Datagram
+\end{itemize}
+
+
+As we saw in the last Lecture a router has some number of `in' connections and `out' connections which are connected together depending on which 
+`out' connection the message is supposed to be sent. This  `routing' is done by putting each incoming packets on queues corresponding to the outgoing connection we 
+are supposed to send to.
+
+This rerouting is done so that if the incoming rate to an out connection is greater than its outgoing rate we have the queue as a buffer.
+
+
+Why do we just not make the queue very large to prevent these 'drop offs'
+\begin{itemize}
+    \item \textbf{Cost:} Memory is not Free so we need to be aware of the trade offs of increasing the queue size
+    \item \textbf{End-End delay:} If the router has a buffer of say size $Q_{max}$ and an output rate of c $bits/sec$.
+    Now if the queue is almost full and we get a new packet put in at the very end, the packet takes $\frac{Q_{max}}{c}$ time to be put on the next connection. 
+    This is called the End-End delay and clearly a large queue increasing the worst case End-End delay
+\end{itemize}
+
+The total delay for a transmission of a packet through some K routers would be 
+\[ Delay = \sum_{k = 1}^{k = K}\frac{Q_{max}^k}{c^k} + S_d + T_d\]
+
+\(S_d\) is called the speed of light delay and \(T_d\) is the transmission delay. 
+In most applications End-End delay is the significant bottle neck for the whole delay. Infact in some applications 
+we prefer dropping packets inorder to not have high delays 
+
+Most commercial networks have more routers than needed to have good back-ups to prevent the shutdown of their networks even if a router 
+fails. How is this rerouting done?
+
+\begin{itemize}[itemsep = 0cm, parsep = 0cm, topsep = 0cm]
+    \item Readjusting weights:
+    \item \textbf{Longest Prefix Match:} There is a router table present which gives us the ID corresponding to a router. When a packet has to make the choice between routers it takes the path with the longest prefix match. 
+\end{itemize}
+
+
+\section{Tansmission Control Protocol(Layer - 4 ):}
+
+
+\section{Layers of a network}
+
+\begin{itemize}[itemsep = 0cm, parsep = 0cm, topsep = 0cm]
+    \item \textbf{L5:} Applications:Web (HTTP),Email (SMTP),Voice Calls (VOIP),Text messaging
+    \item \textbf{L4:} TCP, UDP
+    \item \textbf{L3:} IP (Internet Protocol)
+    \item \textbf{L2:} WiFi, 4G, Ethernet
+    \item \textbf{L1:} Wireless, Optic Fibre
+\end{itemize}
+
+\section{Layering and Design Protocols}
+Any subproblem is handled by some protocol.
+
+We have divided networks into 
+5 layers. Specifically Application layer, Transmission Layer, Network Layer,Data Link Layer ,Physical Layer.  
+This abstraction enables users to interact only with the layer they are concerned with in that layer without having to deal with the 
+network as a whole. 
+
+Some advantages of layering networks are:
+\begin{itemize}[itemsep = 0cm, parsep = 0cm, topsep = 0cm]
+    \item \textbf{Ease of development:} Only certain problems need to be dealt with at each layer
+    \item \textbf{Debugging:} Ease in fixing new problems in each layer independently
+    \item \textbf{Flexibility of Physical technologies, Applications:} As an example whatsapp as an application 
+    only deals with that layer of the network. It doesn't interfere/have to deal with the particular intricacies of the 
+    physical technology used by their users to connect to the network.
+    \item \textbf{Ease of Modification:} We need to change only a particular layer to address problems associated with it 
+\end{itemize}
+\end{document}
