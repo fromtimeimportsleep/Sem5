@@ -1,18 +1,35 @@
+# Important Dates
+
+## Deadline dates here
+
+- CS 378 - No lab on Aug 9th
+- CS 378 Lab 1 - 12th Aug (Next Sunday) 23:59 hrs
+
+## Tentitive Quizzes dates here
+
+- CS 339 Quiz 1 - Week of Aug 19th - 23rd
+
 # Weekly Recap
 
 Summary of what happened (topics covered) in classes this week could go here
 
+## Thursday
+
+- CS 348 - Disadvantages of Layering, Latency Metrics including One way delay (OWD), Round trip delay (RTT), Jitter
+
+- CS 339 - Applicative order and Normal order of Evaluation, Conditionals, Newton’s method for square roots
+
 ## Monday
 
-CS 348 - Course logistics, History of ARPANET, definition of Protocol, Defined Physical, Data Link and Network Layers
+- CS 348 - Headers by each layer, Quality of Service (QoS)(3 metrics), Various wired Physical media inlcuding Twisted-Pair wire, Coaxial Cable, Optic fibre
 
-CS 339 - Course intro, 3 parts including Functional Paradigm, Object-Oriented Paradigm, Logic Paradigm, Motivation and logistic, First Homework
+- CS 339 - Recurssive and Iterative way of finding factorial, Linear and Tree recusion examples, Tail recursion for Fibonacci (Virahanka:) series
 
 ## Tuesday
 
-CS 348 - Simplex and Duplex channels, Congestion Control, Reasons for packet drop, OSI-5 model including Transport layer (TCP and UDP), Application layer
+- CS 348 - dB and dBm units of Power, Attenuation and its dependence on frequency, wireless Physical media by Radio wave towers
 
-CS 339 - Introduction to Scheme PL, Elements of a PL - Primitive,Combination,Abstraction, Procedure and Environment
+- CS 339 - Free and Bound variables, Static and Dynamic Scoping, Higher Order Functions with procedures as arguments, First class values
 
 
 
@@ -46,7 +63,7 @@ Weightage of everything for grades
 ### Paradigms of programming Lab(Tentative):
 
 - Attendance - 2 (7 out of 8)
-- Practice - 3(7  out of 8)
+- Practice - 3 (7  out of 8)
 - Endsem - 35%
 - Midsem - 30%
 
