@@ -1,3 +1,15 @@
+## Tips to use this repository
+
+Ideally the repo can be cloned onto the system to substitute local directories to keep resources from the semester
+
+Command to clone 
+
+`` git clone https://github.com/fromtimeimportsleep/Sem5 ``
+
+You can then add your own directories for electives and maintain everything in the same directory
+
+Make sure to ``git pull`` now and then to get updates :)
+
 # Important Dates
 
 ## Deadline dates here
