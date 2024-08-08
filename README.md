@@ -14,10 +14,10 @@ Make sure to ``git pull`` now and then to get updates :)
 
 ## Deadline dates here
 
-- CS 378 - No lab on Aug 9th
+- CS 378 - No lab on Aug 8th (THU)
 - CS 378 Lab 1 - 12th Aug (Next Sunday) 23:59 hrs
 
-## Tentitive Quizzes dates here
+## Tentitive Quiz dates here
 
 - CS 339 Quiz 1 - Week of Aug 19th - 23rd
 
