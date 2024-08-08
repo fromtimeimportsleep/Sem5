@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  1 AUG 2024 22:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  8 AUG 2024 16:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -791,51 +791,92 @@ LaTeX Info: Redefining \nameref on input line 39.
 \@outlinefile=\write4
 \openout4 = `CS348.out'.
 
+ (./CS348.toc)
+\tf@toc=\write5
+\openout5 = `CS348.toc'.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 48--53
-[] 
- []
-
-<Diagrams/bus.png, id=23, 351.3125pt x 144.54pt>
-File: Diagrams/bus.png Graphic file (type png)
-<use Diagrams/bus.png>
-Package pdftex.def Info: Diagrams/bus.png  used on input line 80.
-(pdftex.def)             Requested size: 199.60895pt x 82.12619pt.
-<Diagrams/star.png, id=24, 244.915pt x 207.77625pt>
-File: Diagrams/star.png Graphic file (type png)
-<use Diagrams/star.png>
-Package pdftex.def Info: Diagrams/star.png  used on input line 86.
-(pdftex.def)             Requested size: 99.80447pt x 84.66885pt.
-[1
+ [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Diagrams/switch.jpeg, id=35, 323.2075pt x 156.585pt>
-File: Diagrams/switch.jpeg Graphic file (type jpg)
-<use Diagrams/switch.jpeg>
-Package pdftex.def Info: Diagrams/switch.jpeg  used on input line 101.
-(pdftex.def)             Requested size: 227.62204pt x 110.27536pt.
- [2 <./Diagrams/bus.png> <./Diagrams/star.png> <./Diagrams/switch.jpeg>]
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 140--145
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 50--55
 [] 
  []
 
-[3] (./CS348.aux)
+<Diagrams/bus.png, id=105, 351.3125pt x 144.54pt>
+File: Diagrams/bus.png Graphic file (type png)
+<use Diagrams/bus.png>
+Package pdftex.def Info: Diagrams/bus.png  used on input line 82.
+(pdftex.def)             Requested size: 199.60895pt x 82.12619pt.
+<Diagrams/star.png, id=106, 244.915pt x 207.77625pt>
+File: Diagrams/star.png Graphic file (type png)
+<use Diagrams/star.png>
+Package pdftex.def Info: Diagrams/star.png  used on input line 88.
+(pdftex.def)             Requested size: 99.80447pt x 84.66885pt.
+[2]
+<Diagrams/switch.jpeg, id=114, 323.2075pt x 156.585pt>
+File: Diagrams/switch.jpeg Graphic file (type jpg)
+<use Diagrams/switch.jpeg>
+Package pdftex.def Info: Diagrams/switch.jpeg  used on input line 103.
+(pdftex.def)             Requested size: 227.62204pt x 110.27536pt.
+ [3 <./Diagrams/bus.png> <./Diagrams/star.png> <./Diagrams/switch.jpeg>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 143--148
+[] 
+ []
+
+[4] [5]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 226--231
+[] 
+ []
+
+[6]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 267--272
+[] 
+ []
+
+<Diagrams/headers.png, id=154, 646.415pt x 372.89313pt>
+File: Diagrams/headers.png Graphic file (type png)
+<use Diagrams/headers.png>
+Package pdftex.def Info: Diagrams/headers.png  used on input line 284.
+(pdftex.def)             Requested size: 284.52756pt x 164.13037pt.
+[7] [8 <./Diagrams/headers.png>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 334--339
+[] 
+ []
+
+<Diagrams/attenuation.png, id=179, 573.14125pt x 365.86688pt>
+File: Diagrams/attenuation.png Graphic file (type png)
+<use Diagrams/attenuation.png>
+Package pdftex.def Info: Diagrams/attenuation.png  used on input line 381.
+(pdftex.def)             Requested size: 284.52756pt x 181.63222pt.
+[9]
+<Diagrams/optic_attenation.png, id=188, 527.9725pt x 306.14375pt>
+File: Diagrams/optic_attenation.png Graphic file (type png)
+<use Diagrams/optic_attenation.png>
+Package pdftex.def Info: Diagrams/optic_attenation.png  used on input line 393.
+(pdftex.def)             Requested size: 284.52756pt x 164.9788pt.
+ [10 <./Diagrams/attenuation.png> <./Diagrams/optic_attenation.png>]
+<Diagrams/wireless_attenuation.png, id=197, 597.23125pt x 357.335pt>
+File: Diagrams/wireless_attenuation.png Graphic file (type png)
+<use Diagrams/wireless_attenuation.png>
+Package pdftex.def Info: Diagrams/wireless_attenuation.png  used on input line 412.
+(pdftex.def)             Requested size: 426.79134pt x 255.36172pt.
+ [11 <./Diagrams/wireless_attenuation.png>] [12] [13] (./CS348.aux)
 Package rerunfilecheck Info: File `CS348.out' has not changed.
-(rerunfilecheck)             Checksum: 5592B4F928F2AAE54F8B27B94B96BE13;527.
+(rerunfilecheck)             Checksum: 290AC88A089715D8EA1BDB0BD09F3477;2616.
  ) 
 Here is how much of TeX's memory you used:
- 28859 strings out of 478287
- 580556 string characters out of 5849289
- 942795 words of memory out of 5000000
- 46560 multiletter control sequences out of 15000+600000
+ 28953 strings out of 478287
+ 582168 string characters out of 5849289
+ 943795 words of memory out of 5000000
+ 46605 multiletter control sequences out of 15000+600000
  477083 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,8n,89p,436b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on CS348.pdf (3 pages, 117259 bytes).
+ 84i,10n,89p,436b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on CS348.pdf (13 pages, 1980395 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 500000)
- 60 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 293 PDF objects out of 1000 (max. 8388607)
+ 231 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 198 words of extra memory for PDF output out of 10000 (max. 10000000)
 

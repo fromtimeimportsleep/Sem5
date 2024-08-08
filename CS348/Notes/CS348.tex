@@ -25,19 +25,21 @@
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
+    linkcolor=black,
     citecolor=green,
     urlcolor=red
 }
 \usetikzlibrary{quotes, angles, decorations.markings, intersections}
 \usetikzlibrary{calc,patterns,angles,quotes, 3d, intersections, positioning, shapes, automata, positioning}
 \newcommand{\tbox}[1]{\noindent\fbox{\parbox{\textwidth}{#1}}}
-\title{OS CS219 Notes}
+\title{Networks CS348 Notes}
 \author{}
 \date{\today}
 
 \begin{document}
 
+
+\tableofcontents
 \maketitle
 \setlength{\parskip}{6pt}
 \setlength{\parindent}{0pt}
@@ -129,7 +131,8 @@ The most common request on the Internet is an HTTP request (ie) a request by a c
 \end{enumerate}
 
 
-This by no means completely covers the functionality of each layer but rather gives a flavour of each layer's functions. It is easy to see 
+Now once the data is transferred to the physical layer of the web server, it climbs up in the layers till the application layer of the web server is reached. The response of 
+the web server is transmitted back similarly. This by no means completely covers the functionality of each layer but rather gives a flavour of each layer's functions. It is easy to see 
 how the abstraction is helpful as now the application layer has no need to worry about which media is used to transfer the bits 
 and the Physical layer is oblivious to what message it is transferring. 
 
@@ -144,133 +147,350 @@ The abstraction helps to simplify the structure of the network by helping us dea
 }
 
 
-% \section{IP address}
+\subsection{IP address}
 
-% Each connected device has a unique identifier to describe it.
-% This identifier is known as the IP address of a device. 
+Each connected device has a unique identifier to describe it.
+This identifier is known as the IP address of a device. 
 
-% The IP address has a hierarchical structure. An example of an IP address is `72.85.5.25'. This can be thought of 
-% as being similar to a postal address where the country of your address is the highest level at which location is specified. 
-% After this the state, city, area narrow down your location more and the message travels in an organised way from one `level' to another.
+The IP address has a hierarchical structure. An example of an IP address is `72.85.5.25'. This can be thought of 
+as being similar to a postal address where the country of your address is the highest level at which location is specified. 
+After this the state, city, area narrow down your location more and the message travels in an organised way from one `level' to another.
+
+In fact as discussed before each router at the Network layer transmits a message to a particular router which is chosen based on its IP address and the IP address of the destination. 
+How is this rerouting done?
+
+\begin{itemize}
+    \item \textbf{Readjusting weights:} The weights of each connection can be adjusted to change the shortest path to the destination
+    \item \textbf{Longest Prefix Match (Practical):} There is a router table present which gives us the IP corresponding to a router. When a packet has to make the choice between routers it takes the router connected to the
+    current router with the longest prefix match when compared to the destination address. 
+\end{itemize}
+
+\subsection{Message Granularity, Delays}
+
+The size of the message which is being sent via the network changes depending on which layer the transfer happens in.
+That is a message can be described in various granularities.
+\begin{itemize}
+    \item \textbf{Application layer}: Application dependent, a video/ a webpage etc..
+    \item \textbf{Transmission layer}: TCP splits the message into segments, UDP splits it into Datagrams
+    \item \textbf{Network layer:} Transfers data as packets
+    \item \textbf{Data Link layer:} Symbols
+    \item \textbf{Physical layer:} Bit by Bit
+\end{itemize}
 
 
-% \section{Message}
+As we saw in the last Lecture a router has some number of `in' connections and `out' connections which are connected together depending on which 
+`out' connection the message is supposed to be sent. This  `routing' is done by putting each incoming packets on queues corresponding to the outgoing connection we 
+are supposed to send to.
+
+This rerouting is done so that if the incoming rate to an out connection is greater than its outgoing rate we have the queue as a buffer.
 
 
-% A message can be described in various granularities.
-% \begin{itemize}
-%     \item \textbf{Level 1:} Frame
-%     \item \textbf{Level 2:} Symbol
-%     \item \textbf{Level 3:} Packet
-%     \item \textbf{Level 4:} TCP $\rightarrow$ segment, UDP $\rightarrow$ Datagram
-% \end{itemize}
+Why do we just not make the queue very large to prevent these 'drop offs'
+\begin{itemize}
+    \item \textbf{Cost:} Memory is not free so we need to be aware of the trade offs of increasing the queue size
+    \item \textbf{End-End delay:} If the router has a buffer of say size $Q_{max}$ and an output rate of c $bits/sec$.
+    Now if the queue is almost full and we get a new packet put in at the very end, the packet takes $\frac{Q_{max}}{c}$ time to be put on the next connection. 
+    This is called the End-End delay and clearly a large queue increasing the worst case End-End delay
+\end{itemize}
+
+The total delay for a transmission of a packet through some K routers would be 
+\[ Delay = \sum_{k = 1}^{k = K}\frac{Q_{max}^k}{c^k} + S_d + T_d\]
+
+\(S_d\) is called the speed of light delay and \(T_d\) is the transmission delay. 
+In most applications End-End delay is the significant bottle neck for the whole delay. Infact in some applications 
+we prefer dropping packets inorder to not have high delays\footnote{Think of voice call where a delay would lead to not being able to communicate anything}
 
 
-% As we saw in the last Lecture a router has some number of `in' connections and `out' connections which are connected together depending on which 
-% `out' connection the message is supposed to be sent. This  `routing' is done by putting each incoming packets on queues corresponding to the outgoing connection we 
-% are supposed to send to.
+\subsection{Layering and Design Protocols}
+Any subproblem is handled by some protocol corresponding to the layer we are at. 
 
-% This rerouting is done so that if the incoming rate to an out connection is greater than its outgoing rate we have the queue as a buffer.
+We have divided networks into 
+5 layers. Specifically Application layer, Transmission Layer, Network Layer, Data Link Layer , Physical Layer.  
+This abstraction enables users to interact only with the layer they are concerned with in that layer without having to deal with the 
+network as a whole. 
 
-
-% Why do we just not make the queue very large to prevent these 'drop offs'
-% \begin{itemize}
-%     \item \textbf{Cost:} Memory is not Free so we need to be aware of the trade offs of increasing the queue size
-%     \item \textbf{End-End delay:} If the router has a buffer of say size $Q_{max}$ and an output rate of c $bits/sec$.
-%     Now if the queue is almost full and we get a new packet put in at the very end, the packet takes $\frac{Q_{max}}{c}$ time to be put on the next connection. 
-%     This is called the End-End delay and clearly a large queue increasing the worst case End-End delay
-% \end{itemize}
-
-% The total delay for a transmission of a packet through some K routers would be 
-% \[ Delay = \sum_{k = 1}^{k = K}\frac{Q_{max}^k}{c^k} + S_d + T_d\]
-
-% \(S_d\) is called the speed of light delay and \(T_d\) is the transmission delay. 
-% In most applications End-End delay is the significant bottle neck for the whole delay. Infact in some applications 
-% we prefer dropping packets inorder to not have high delays 
-
-% Most commercial networks have more routers than needed to have good back-ups to prevent the shutdown of their networks even if a router 
-% fails. How is this rerouting done?
-
-% \begin{itemize}
-%     \item \textbf{Readjusting weights:} The weights of each connection can be adjusted to change the shortest path to the destination
-%     \item \textbf{Longest Prefix Match:} There is a router table present which gives us the ID corresponding to a router. When a packet has to make the choice between routers it takes the path with the longest prefix match. 
-% \end{itemize}
-
-% \section{Layers of a network}
-
-% \begin{itemize}
-%     \item \textbf{L5:} Applications:Web (HTTP), Email (SMTP), Voice Calls (VOIP), Text messaging
-%     \item \textbf{L4:} TCP, UDP
-%     \item \textbf{L3:} IP (Internet Protocol)
-%     \item \textbf{L2:} WiFi, 4G, Bluetooth, Ethernet
-%     \item \textbf{L1:} Wireless, Optic Fibre
-% \end{itemize}
-
-% \section{Layering and Design Protocols}
-% Any subproblem is handled by some protocol.
-
-% We have divided networks into 
-% 5 layers. Specifically Application layer, Transmission Layer, Network Layer,Data Link Layer ,Physical Layer.  
-% This abstraction enables users to interact only with the layer they are concerned with in that layer without having to deal with the 
-% network as a whole. 
-
-% Some advantages of layering networks are:
-% \begin{itemize}
-%     \item \textbf{Ease of development:} Only certain problems need to be dealt with at each layer
-%     \item \textbf{Debugging:} Ease in fixing new problems in each layer independently
-%     \item \textbf{Flexibility of Physical technologies, Applications:} As an example whatsapp as an application 
-%     only deals with that layer of the network. It doesn't interfere/have to deal with the particular intricacies of the 
-%     physical technology used by their users to connect to the network.
-%     \item \textbf{Ease of Modification:} We need to change only a particular layer to address problems associated with it. There is no fear of breaking the system due to modifications
-%     made to said layer.
-%     \item \textbf{Choices at each layer:} Each layer can use multiple media without breaking compatability with the system. 
-% \end{itemize}
+Some advantages of layering networks are:
+\begin{itemize}
+    \item \textbf{Ease of development:} Only certain problems need to be dealt with at each layer
+    \item \textbf{Debugging:} Ease in fixing new problems in each layer independently
+    \item \textbf{Flexibility of Physical technologies, Applications:} As an example whatsapp as an application 
+    only deals with that layer of the network. It doesn't interfere/have to deal with the particular intricacies of the 
+    physical technology used by their users to connect to the network.
+    \item \textbf{Ease of Modification:} We need to change only a particular layer to address problems associated with it. There is no fear of breaking the system due to modifications
+    made to said layer.
+    \item \textbf{Choices at each layer:} Each layer can use multiple media without breaking compatability with the system. 
+\end{itemize}
 
 
 
-% \noindent\tbox{
-%     \begin{center}
-%     \textbf{\Huge Lecture 3}
-%     \end{center}
-% }
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 3}
+    \end{center}
+}
 
 
 
-% Disadvantages of layering networks:
-% \begin{enumerate}
-%     \item There is some opaqueness about other layers. As an example let's say 
-%     a packet is sent from a source to destination using a sequence of routers. If a packet is dropped midway, 
-%     TCP makes an assumption that they were dropped due to a full queue. Infact there can even be wrong assumptions that a 
-%     packet was dropped\footnote{example for another reason is interference in wireless links}. 
+Disadvantages of layering networks:
+\begin{enumerate}
+    \item There is some opaqueness about other layers. As an example let's say 
+    a packet is sent from a source to destination using a sequence of routers. If a packet is dropped midway, 
+    TCP makes an assumption that they were dropped due to a full queue. Infact there can even be wrong assumptions that a 
+    packet was dropped\footnote{example for another reason is interference in wireless links}. 
 
-%     This mainly arises from the fact that the routers have litte to no communication going with the protocol. 
+    This mainly arises from the fact that the routers have little to no communication going with the protocol of a higher layer. 
 
-%     \item There is redundancy at each level of the network. \textbf{TCP} handles retransmission but even \textbf{MAC} handles that. 
-%     Let's say that a packet transmission attempt in a wireless link failed. The MAC will make sure that retransmission happens. But this is also taken care by TCP which is redundant.
+    \item There is redundancy at each level of the network. \textbf{TCP} handles retransmission, but even \textbf{MAC} handles that. 
+    Let's say that a packet transmission attempt in a wireless link failed. The MAC will make sure that retransmission happens. But this is also taken care by TCP which is redundant.
 
-%     \item Transmission is suboptimal. The sender of the message is unable to specify guarentees they want in the delivery of said packets. This is referred to as a 
-%     `Best Effort' system where the network has no guarentees regarding the quality of service
-% \end{enumerate}
+    \item Transmission is suboptimal. The sender of the message is unable to specify guarantees they want in the delivery of said packets. This is referred to as a 
+    `Best Effort' system where the network has no guarantees regarding the quality of service
+\end{enumerate}
 
 
 
-% \section{Latency Metrics}
+\subsection{Latency Metrics}
 
-% \begin{enumerate}
-%     \item \textbf{One-Way delay:} If a packet is sent out at time $t_0$ and it reaches the destination at $t_1$, then the \textit{one way delay} of the packet is $t_1 - t_0$. However measuring 
-%     one day delay is difficult since it takes the direct difference in times measured at the source and destination. This difference may drift apart over time due to both systems operating at different clock cycles.
-%     \item \textbf{Round-Trip Time:} Once a packet is recieved by the target it sends back an acknowledgment message. The time taken from sending the messages to recieving the acknowledgment is its \textit{round trip time}. 
+\begin{enumerate}
+    \item \textbf{One-Way delay:} If a packet is sent out at time $t_0$ and it reaches the destination at $t_1$, then the \textit{one way delay} of the packet is $t_1 - t_0$. However measuring 
+    one day delay is difficult since it takes the direct difference in times measured at the source and destination. This difference may drift apart over time due to both systems operating at different clock cycles.
+    \item \textbf{Round-Trip Time:} Once a packet is recieved by the target it sends back an acknowledgment message. The time taken from sending the messages to recieving the acknowledgment is its \textit{round trip time}. 
     
-%     \item \textbf{Jitter:} Jitter measures the variability in the latencies associated with the sending some \(k\) packets. Let jitter be \(J\). It can be written as
+    \item \textbf{Jitter:} Jitter measures the variability in the latencies associated with the sending some \(k\) packets. Let jitter be \(J\). It can be written as
     
-%     \begin{align*}
-%     e_k &= |d_{k+1} - d_{k}| \\
-%     J &= \frac{1}{n-1} \sum_{k=1}^n e_k 
-%     \end{align*}
-% \end{enumerate}
+    \begin{align*}
+    e_k &= |d_{k+1} - d_{k}| \\
+    J &= \frac{1}{n-1} \sum_{k=1}^n e_k 
+    \end{align*}
+\end{enumerate}
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 4}
+    \end{center}
+}
+
+\subsection{Headers}
+
+There is some meta data about each packet/module of data generated when a message is sent from one layer to the below layer. 
+This metadata is added as a header to the message itself that is shared with the next layer. 
+
+When a message goes to another layer below this header is not tampered with at all. Rather the next header is 
+just layered on like an onion on top of the previous header. 
 
 
-% \section{Something I have no idea}
+\begin{figure}[H]
+    \centering 
+    \includegraphics*[width = 10cm]{Diagrams/headers.png}
+    \label{fig:headers}
+    \caption{How headers are built and removed}
+\end{figure}
 
-% Imagine a whatsapp message that is being sent across the network. When the message travels from the application layer to the 
+
+\section{Quality of service}
+
+There are some metrics to determine the quality of the service provided by the network. 
+
+\begin{itemize}
+    \item \textbf{Latency:} Delay from the dispatch of a packet till it reaches destination
+    \item \textbf{Throughput:} Amount of data that can be sent in given time
+    \item \textbf{Bandwidth:} Amount of data that can be sent at the same time in network
+\end{itemize}
+
+
+
+\subsection{Physical Media}
+
+\begin{enumerate}
+    \item \textbf{Twisted pair cables:}
+    It consits of a pair of cables twisted together (to cancel out magnetic fields created by loops). The larger the 
+    number of cables and the more the twisting the better it is. 
+
+    There are different categories of cable each having its own data transmission rates. 
+
+    \item\textbf{Co-axial Medium:}
+    Co-axial cables consist of a series of wires covered by a wire mesh to deal with magnetic fields. 
+    Depending on the thickness of the mesh data transmission rates vary. 
+    \item\textbf{Optic Fibre:}
+    
+
+
+        \begin{itemize}
+            \item Single Mode: The optical fiber is so thin  that only a 
+            single ray of light can cleanly pass through it
+            \item Multiple Mode: A thicker fiber which is capable of transferring multiple rays 
+            at the same time
+        \end{itemize}
+
+
+        Which of those is better? One may think it is multimode since it can transmit multiple pulses together. 
+        However the rays in the multimode gets interferred with each other if they are placed closer together. 
+        
+        Thus there is a need to delay the throughput in multimode inorder to make sure the signals received are coherent.
+        
+        Overall single mode turns out to be better. 
+    \end{enumerate}
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 5}
+    \end{center}
+}
+
+\subsection{Attenuation}
+
+Attenuation is the loss of power when it is transmitted over a Physical media. 
+
+\[ \text{Attenuation} = 10 \log(\frac{P_{in}}{P_{out}})\]
+
+Attenuation has units as dB/decibels. 
+
+Some examples on calculating Attenuation:
+
+\begin{enumerate}
+    \item  \[\frac{P_{in}}{P_{out}} = 2 \]
+    \begin{align*}
+        \text{Attenuation} &= 10 \log_{10}2 \\
+        &= 3dB 
+    \end{align*}
+    \item  There are two identical wires which cause an Attenuation of 3dB. 
+    The wires are connected and a signal is passed through the combined wire. Assume P1 is the power left after the signal 
+    passed through one of the wires
+    \[10\log_{10}\frac{P_{in}}{P_1} + 10\log_{10}\frac{P_{1}}{P_{out}} = 10\log_{10}\frac{P_{in}}{P_{out}} \]
+    Thus total attenuation is the sum of attenuation of both wires.
+\end{enumerate}
+
+
+Another thing to be noted is that power is directly proportional to the square of the amplitude of a signal. 
+Thus Attenuation can also be expressed as:
+\begin{align*}
+    \text{Attenuation} =& 10 \log_{10} \frac{(A_{in})^2}{(A_{out})^2} \\
+    =& 20 \log_{10} \frac{A_{in}}{A_{out}}
+\end{align*}
+        
+\subsection{Absolute Power in decibel scale}
+
+1 mW(milli Watt) is kept as the reference to express absolute power in the decibel scale. 
+That is power of P Watts can be written as \(10\log_{10}\frac{P}{10^{-3}}\). 
+
+Absolute power has no significance to describe the quality of a transmission on its own. What does matter is Recieved power relative to Noise power. 
+
+\subsection{Frequency vs attenuation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 10cm]{Diagrams/attenuation.png}
+    \label{fig:attenuation}
+    \caption{Attenuation vs Length of cable}
+\end{figure}
+          
+Clearly, attenuation increases with the frequency of the signal sent through it. 
+This does not make sense considering the wire to have only resistance. Thus it is clear that the wire also has some inductance associated to make this behaviour happen. 
+
+
+However, the situation is a bit different for optical fibres. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 10cm]{Diagrams/optic_attenation.png}
+    \label{fig:optic-attenuation}
+    \caption{Attenuation vs Length of optic fibre}
+\end{figure}
+
+Here the attenuation shows non-linear behaviour which suggest some capacitative behaviour along with the inductance.
+
+To prevent attenuation from decreasing signal quality, repeaters are used to boost up the signal. They are placed at calculative 
+distances to maximise their advantage. 
+
+
+Different signals can be sent across the same channel using a different Frequency. But 
+the speed at which data can be sent decreases as the frequency range of different messages or \textbf{Bandwidth} increases. 
+This can be calculated using Claude Shanon's definition of entropy. 
+
+
+\subsection{Attenuation in Wireless signals}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15cm]{Diagrams/wireless_attenuation.png}
+    \label{fig:wireless-attenuation}
+    \caption{Attenuation in wireless communication}
+\end{figure}
+
+The power obtained depends on the area it is recieved from and the area it has spread over. 
+Power obtained (ie) $P_{Rx}$ can be written as 
+\[P_{Rx} = \frac{P.A}{4\pi d^2}\]
+In reality the equation turns out to be proportional to $ \frac{P}{d^\alpha}$ where alpha 
+can vary from 2 to 5. 
+
+Why is $\alpha > 2$? It is due to interference and diffraction. If a big object 
+obstructs a wave it may bend around the obstacle, so it is non-trivial to note where signals will be weak. Similarly when waves take longer paths 
+and reflect off surfaces to reach a location they can interfere destructively to decrease signal power further (Multi-path). 
+
+This is why there are random locations with good signals and others very close by with bad signals. 
+
+
+One point is to note is that due to interference the attenuation in wireless transmission is much much more than wired transmissions. Thus,
+some frequency bands are licensed by different service providers and it is agreed that they will use those frequencies for transmission. 
+
+What about WiFi? Well, there are some bands which are unlicensed and can be used without any premium. However, here 
+again we have to worry about interference. 
+
+
+\subsubsection{MIMO}
+
+Multi Input Multi Output (MIMO) is a larger tower with several antennas to transmit signals. 
+Why do many different antennas help? Virtue of having several antennas different signals can be sent on the antennas to strategically make the 
+signals interfere to only send a beam in a particular direction. Thus it uses multi-path communication to its advantage. 
+
+\section{Signalling}
+
+Now signals have to formualted and transmitted bit by bit. 
+There are two ways to formulate signals bit by bit. Assume a `1' is described by +5V and `0' is described by -5V. 
+
+\begin{itemize}
+    \item \textbf{Non-Return to Zero:} To send a signal like `101', +5v and then -5v and then +5v is sent one after another
+    \item \textbf{Return to Zero:} To send a signal like `101', +5v and then the signal `returns' to 0, then -5v and again returns to zero after some time and then +5v is sent.
+\end{itemize}
+
+
+What are some of the issues with Non-return to zero?
+
+\begin{itemize}
+\item The number of bits sent can only be calculated using the time interval of 
+the signal which is needed for one bit. The issue is that the clocks of the sender and the reciever need not be in sync. 
+
+So the receiver may percieve a different signal. 
+
+This problem is rectified by \textit{Return to zero} since the wave form indicates the number of bits sent.
+The tradeoff here is that a higher frequency is needed to send that waveform which implies higher attenuation. 
+
+
+\item Another issue is Baseline wander. When a signal is amplified, non-ideally 
+a DC-offset is induced in the signal. If the offset is severe enough along with the noise then 
+a `0' could be mistaken to be a 1. 
+
+To deal with this a High-Pass filter is used. A \textbf{HPF} removes all low frequency signals
+which includes the DC offset. Infact since only a particular provider's signals are to be recieved, a bandpass filter is 
+used to filter out signals not falling in the desired range.   
+\end{itemize}
+
+Apart from this a big issue is that regardless of the method used, lets say that a sequence of 1s is sent as a signal. 
+Now the average signal sent becomes 1 and as the signal gets amplified 
+an offset is created. Thus, to prevent this the average of the signal sent must be zero. 
+
+
+Too many issues phew :/
+
+How to deal with all this?
+
+\subsection{Manchester coding}
+
+Encode a bit differently depending on the signal. Take an xor of the 
+clock and the bit to be sent. 
+
+
+\begin{itemize}
+    \item There is a signal transition for every bit period
+    \item The average signal per bit period is 0
+\end{itemize}
+
+
 \end{document}
