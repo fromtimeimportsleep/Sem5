@@ -12,6 +12,7 @@
 \usepackage{subfig}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{tabularx}
 \usepackage{multicol}
 \usepackage{tcolorbox}
 \usepackage{xcolor}
@@ -474,7 +475,9 @@ used to filter out signals not falling in the desired range.
 
 Apart from this a big issue is that regardless of the method used, lets say that a sequence of 1s is sent as a signal. 
 Now the average signal sent becomes 1 and as the signal gets amplified 
-an offset is created. Thus, to prevent this the average of the signal sent must be zero. 
+an offset is created. Even if this is corrected by removing the offset now the entire signal is lost. 
+
+Thus, to prevent this the average of the signal sent must be zero. 
 
 
 Too many issues phew :/
@@ -492,5 +495,26 @@ clock and the bit to be sent.
     \item The average signal per bit period is 0
 \end{itemize}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+         \hline
+         Data & Clock & Encoding \\ \hline
+         0 & 0 & 0 \\ \hline
+         1 & 0 & 1 \\ \hline
+         1 & 1 & 0 \\ \hline
+         0 & 1 & 1 \\ \hline
+    \end{tabular}
+    \caption{Manchester Encoding}
+    \label{tab:Manchester_encoding}
+\end{table}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{Diagrams/Manchester_Encoding.jpg}
+    \caption{Manchester Encoding}
+    \label{fig:encoding}
+\end{figure}
 
 \end{document}
