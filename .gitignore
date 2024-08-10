@@ -1,0 +1,6 @@
+*.out
+*.aux
+*.log
+*.gz
+*.tar.gz
+*.Identifier
