@@ -1,3 +1,13 @@
+# Important Dates
+
+## Deadline dates here
+
+- CS 378 Lab 1 - 12th Aug (Next Sunday) 23:59 hrs
+
+## Tentitive Quiz dates here
+
+- CS 339 Quiz 1 - Aug 26th 2:00pm to 3:00pm
+
 ## Tips to use this repository
 
 Ideally the repo can be cloned onto the system to substitute local directories to keep resources from the semester
@@ -10,32 +20,9 @@ You can then add your own directories for electives and maintain everything in t
 
 Make sure to ``git pull`` now and then to get updates :)
 
-# Important Dates
-
-## Deadline dates here
-
-- CS 378 - No lab on Aug 8th (THU)
-- CS 378 Lab 1 - 12th Aug (Next Sunday) 23:59 hrs
-
-## Tentitive Quiz dates here
-
-- CS 339 Quiz 1 - Week of Aug 19th - 23rd
-
 # Weekly Recap
 
 Summary of what happened (topics covered) in classes this week could go here
-
-## Thursday
-
-- CS 348 - Disadvantages of Layering, Latency Metrics including One way delay (OWD), Round trip delay (RTT), Jitter
-
-- CS 339 - Applicative order and Normal order of Evaluation, Conditionals, Newton’s method for square roots
-
-## Monday
-
-- CS 348 - Headers by each layer, Quality of Service (QoS)(3 metrics), Various wired Physical media inlcuding Twisted-Pair wire, Coaxial Cable, Optic fibre
-
-- CS 339 - Recurssive and Iterative way of finding factorial, Linear and Tree recusion examples, Tail recursion for Fibonacci (Virahanka:) series
 
 ## Tuesday
 
@@ -43,6 +30,17 @@ Summary of what happened (topics covered) in classes this week could go here
 
 - CS 339 - Free and Bound variables, Static and Dynamic Scoping, Higher Order Functions with procedures as arguments, First class values
 
+## Thursday
+
+- CS 348 - MIMO and Massive MIMO, Wired Signalling including NRZ and RZ, Issues with NRZ, Manchester encoding
+
+- CS 339 - Magic procedure, Closures (Lambda + environment), Another way of writing sqrt, Let bindings
+
+## Monday
+
+- CS 348 - Differential Manchester encoding, Modulation in wireless channels, Thermal noise, Inner product of wave function
+
+- CS 339 - Uses of Lambda calculus, 3 types of terms (Variable, Abstraction, Application), two examples, Normal form, Church-Rosser theorem
 
 
 # Timetable
