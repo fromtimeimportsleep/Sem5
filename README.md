@@ -2,7 +2,7 @@
 
 ## Deadline dates here
 
-- CS 378 Lab 1 - 12th Aug (Next Sunday) 23:59 hrs
+- CS 378 Lab 2 (Design Document [10%]) - 22nd Aug (THU) 23:59 hrs
 
 ## Tentitive Quiz dates here
 
