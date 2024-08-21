@@ -2,11 +2,17 @@
 
 ## Deadline dates here
 
-- CS 378 Lab 2 (Design Document [10%]) - 25th Aug (SUN) 23:59 hrs
+- CS 378 Lab 2 (Design Document [25%]) - 25th Aug (SUN) 11:59 pm <br />
+    (keep following piazza for clarifications) <br />
+    (design document in moodle is updated)
+
+- CS 378 Lab 2 (Final Code) - 1st Sep (SUN) 11:59 pm
+
+- CS 348 Assignment 1 - 30th Aug (FRI) 11:59 pm
 
 ## Tentitive Quiz dates here
 
-- CS 339 Quiz 1 - Aug 26th 2:00pm to 3:00pm
+- CS 339 Quiz 1 - Aug 26th (MON) 3:45 PM to 4:40 PM
 
 ## Tips to use this repository
 
@@ -26,21 +32,21 @@ Summary of what happened (topics covered) in classes this week could go here
 
 ## Tuesday
 
-- CS 348 - dB and dBm units of Power, Attenuation and its dependence on frequency, wireless Physical media by Radio wave towers
+- CS 348 - Phase Shift Keying, Constellation Diagram, Binary PSK (BPSK), Quadrature PSK (QPSK), QAM-16 and their constellation diagrams
 
-- CS 339 - Free and Bound variables, Static and Dynamic Scoping, Higher Order Functions with procedures as arguments, First class values
-
-## Thursday
-
-- CS 348 - MIMO and Massive MIMO, Wired Signalling including NRZ and RZ, Issues with NRZ, Manchester encoding
-
-- CS 339 - Magic procedure, Closures (Lambda + environment), Another way of writing sqrt, Let bindings
+- CS 339 - Lambda calculus (cont), Numbers using lambda, Booleans using lambda, Recursion using lambda 
 
 ## Monday
 
-- CS 348 - Differential Manchester encoding, Modulation in wireless channels, Thermal noise, Inner product of wave function
+- CS 348 - PSK recap, Intial phase shifting, Positions in QPSK, :(QUIZ), Intro to DLL layer (3 subparts) 
 
-- CS 339 - Uses of Lambda calculus, 3 types of terms (Variable, Abstraction, Application), two examples, Normal form, Church-Rosser theorem
+- CS 339 - Rational class using lambda and using pairs, defining Data Abstraction, Lists
+
+## Tuesday
+
+- CS 348 - Error detection (1st subpart), Cyclic Redundancy Check (CRC), Data and Coded Words, Hamming distance, Minimum HD, A suffucient condition for error detection, Error correction
+
+- CS 339 - Programming with Lists, list as array, length and sum of list, Insersion sort of a list, BST using list, tree sort
 
 
 # Timetable
