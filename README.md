@@ -2,9 +2,11 @@
 
 ## Deadline dates here
 
+- CS339 PC Activity 2 - 24th Aug (SAT) 11:55pm
+
 - CS 378 Lab 2 (Design Document [25%]) - 25th Aug (SUN) 11:59 pm <br />
     (keep following piazza for clarifications) <br />
-    (design document in moodle is updated)
+    (design document is updated)
 
 - CS 378 Lab 2 (Final Code) - 1st Sep (SUN) 11:59 pm
 
