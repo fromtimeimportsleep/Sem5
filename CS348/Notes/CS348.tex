@@ -53,7 +53,7 @@
     \textbf{\Huge Lecture 1}
     \end{center}
 }
-
+\part{General Ideas}
 \section{Introduction}
 What is a computer network? A computer network is a group of interconnected devices that can exchange data and resources with each other.
 \st{Almost} all of today's devices are in one way or another connect the biggest computer network alias the Internet. There are several 
@@ -300,7 +300,8 @@ There are some metrics to determine the quality of the service provided by the n
 
 
 
-\subsection{Physical Media}
+\part{Physical Layer}
+\section{Physical Media}
 
 \begin{enumerate}
     \item \textbf{Twisted pair cables:}
@@ -516,5 +517,306 @@ clock and the bit to be sent.
     \caption{Manchester Encoding}
     \label{fig:encoding}
 \end{figure}
+
+How to determine the polarity of the signal sent if the voltages are switched. 
+The last few bits of the preamble can be dedicated to determining the polarity of the signal. 
+Say they are 111, if 111 is received the polarity would be correct and else polarity needs to be flipped. 
+
+However, bit-errors can make this scheme breakdown quickly.
+
+\subsection{Differential Manchester Coding}
+Another more error-free option is to encode the messages with Differential Manchester encoding. 
+Rules: 
+\begin{enumerate}
+    \item \textbf{0 bit:} The voltage in the first half of the time period is different from the 
+    voltage in the second half of the \textbf{Previous} time period. 
+    \item \textbf{1 bit:} The voltage in the first half of the time period is same as the 
+    voltage in the second half of the \textbf{Previous} time period.
+\end{enumerate}
+
+
+\section{Phase Modulation in wireless channels}
+Wireless signals can be used to represent bits in several ways. 
+Frequency, amplitude modulation (ie) encoding the message in values of frequency, amplitude is common. 
+
+However, another popular option is to use phase modulation, (ie) the message is put into the phase of the signal that is sent. 
+
+Unrelated side track:
+Since each company has been allocated a band of frequencies available to them. This implies that 
+the fourier transform of the signal sent almost completely lies within the appropriate frequency range. 
+
+
+Assume that \(f_0\) is the centre of this band and the `Bandwidth' is \(2 \Delta\). How do we make sure the 
+signal's recieved has a frequency decomposition lying only in the given range? One option is to use a bandpass filter at the receiver end to  
+obtain only the signals in some range. 
+
+Take a signal like \(s(t) = A\cos(2\pi ft + \phi)\). The signal recieved would be 
+\(\alpha s(t - \delta) + n(t)\). \(\alpha\) is due to attenuation, \(\delta\) is the propogation delay, n(t) is white noise\footnote{White noise is a signal that has energy at all frequencies and cannot be filtered out}(after bandpass filter).
+
+Side track over.
+\subsection{Signals as vector spaces}
+Signals can actually form a vector space. Each signal is a `vector' offset from 
+the axis corresponding to the phase and having length proportional to amplitude.  
+
+The angle between these vectors can be found using their inner product
+\[ <a(t),b(t)> = \int_{0}^{T} a(t)b(t) \partial t \]
+
+This can be represented as a 2-d diagram where one axis represents the $\sin$ component of the wave and another the $\cos$ component. 
+A phase shifted wave can be represented as a combination of $\sin$, $\cos$ wave. The length of the vector in this domain is proportional to 
+amplitude.
+
+This is called the constellation diagram. 
+
+How to get the constellation diagram for a given signal? We can dot the given signal with \(e_x\) and \(e_y\) (ie)
+unit normal vectors of this vector space to get each component of the wave. 
+
+Thus given a signal with a phase \(\phi\) its 2d representation can be found to be put on the 
+constellation diagram.  
+
+\subsection{BPSK encoding}
+
+Now how do we encode bits using the constellation diagram?
+
+One option is to allocate a region in the 2-d vector space for `1' and another for `0'
+
+Assume that the +x axis points denote signals for bit as `1' and -x axis points denote signals for bit as `0'.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 10cm]{Diagrams/BPSK.png}
+\end{figure}
+
+This is called Binary Phase Shift Keying. Note that even with attenuation and 
+white noise the amount the received signal shifts in a constellation diagram 
+is lesser and thus unlikely to cause a zero to be interpreted as a 1. 
+
+\subsection{QPSK encoding}
+
+The issue with BSPK is that a single signal/wave can only transmit one bit of information.
+If we can partition the 2-d plane into say 4 regions and use a similar logic to now assign a 2-bit encoding 
+to each region, we can double our throughput. 
+
+This is called Quadrature Phase Shift Keying. One point to be noted is that while 
+assigning bits to region it is preferable to assign encoding such that strings which differ in both 
+bits are diagonally opposite regions so that even if a misinterpretation does happen its more likely to be a one bit error. 
+
+\begin{figure}
+    \centering
+    \includegraphics*[width = 10cm]{Diagrams/QPSK.png}
+    \caption{Diagram to show bit encoding of each region }
+\end{figure}
+
+This idea of more regions being able to encode more bits can be expanded more however 
+the more regions it is split into, the more error prone the encoding becomes due the regions being more packed. 
+\part{Data Link Layer}
+\section{Introduction}
+The Data link layer deals with preparing a packet to be sent across 
+the physical medium and also with error correction in received messages. 
+
+Its exact functionalities are:
+\begin{itemize}
+    \item \textbf{Framing:} This deals with packaging packets into units called frames by adding headers with the destination MAC address and also some other information, along with redundancies to detect errors. 
+    \item \textbf{Error Detection and correction:} When a message is sent there are definite error imposed due to environment. This layer deals with detecting and correcting such errors by adding some redundancy in these messages. 
+    \item \textbf{Medium Access:} Deals with managing the shared medium, prevent collisions (where two devices transmit simultaneously), and ensuring fair access for all devices on the network.
+\end{itemize}
+
+\subsection{Bit stuffing}
+
+Some networks keep transmitting data in the order of frame, sequence, frame\(\dots\).
+A sequence is a filer message sent between two frames. It is the bitstring `01111110'. 
+
+The receiver knows to ignore sequences. However, now the issue is what if an actual message to be sent 
+has some substring of the from `01111110'. To deal with this when data is sent every time `11111' (5 1's) appears in a
+sequence the next bit is put to be 0. This 0 is removes when the receiver reads a sequence of 5 1's and at the same time 
+sequences cannot appear since a sequence of 6 1's is impossible. This insertion of 0`s is called bit stuffing. 
+
+
+\subsection{Cyclic redundancy check}
+Now what if there are bit-flips in the message when it is transmitted?
+
+There is a need to be able to identify and preferable correct some errors. For this purpose 
+some extra bits are appended to the end of the message. This is called the Cyclic redundancy check(CRC).
+
+What are some features we would like in CRC?
+
+\begin{itemize}
+    \item Want to be easily able to detect a large variety of errors
+    \item Creation/verification of this CRC must be efficient
+    \item For any n-bit message some k bit CRC should be computable
+\end{itemize}
+
+
+\subsection{Coding Theory}
+
+The process of coming with schemes to create such CRC's is a field called coding theory. 
+The basic idea is as follows 
+\begin{itemize}
+    \item Any n-bit bitstring is mapped to an n+k bitstring
+    \item Since there are only \(2^n\) valid bit strings in the n+k bitstring 
+    domain an error that results in an invalid string can help us detect an error
+    \item Infact given that both sender, receiver know the coding scheme we should be 
+    able to map the `defective' n+k bitstring back to the original message. 
+\end{itemize}
+
+\subsubsection{Hamming Distance}
+
+Hamming distance between two bitstrings(same length) is the number of bit flips needed to transform one to the other. 
+The minimum Hamming distance of a code is the minimum hamming distance between all valid bitstring in the 
+n+k bitstring domain explained before. 
+
+\subsubsection{Error Detection:}
+
+If the minimum Hamming distance is N(for a coding scheme), then any 
+message with less than \(N-1\) bit errors(but atleast 1) can never be a valid bitstring. If that 
+was the case min hamming distance for the code is less than N, which cannot be true. 
+\subsubsection{Error Correction:}
+
+If the minimum Hamming distance is 2N + 1 (for a coding scheme), then any 
+message with less than \(N-1\) bit errors(but atleast 1) can be mapped to the corresponding corrected bitstring accurately.
+
+This bitstring will be the valid bitstring closest to the one with errors. If that 
+was not the case min hamming distance for the code is less than 2N+1, since the bitstring closest to the one with errors 
+and the corrected bitstring will have a hamming distance less than 2N+1. 
+
+\subsection{Galois Theory}
+
+A Galois field, named after the mathematician Évariste Galois, is a finite field that contains a set number of elements and supports operations of addition, subtraction, multiplication, and division (excluding division by zero). 
+
+We define a galois field where addition is replaced by xor. 
+
+The claim is that for any given data bit string, the remainder obtained when the data(appended with k zeros) is divided\footnote{Not exactly but similar operation} by 
+a special k+1 bit generator gives us a CRC. 
+
+\textbf{Example:}
+
+Data is `110110', generator is `1101'. 
+Note that here there is no carry in the addition, just bit by bit addition. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width = 10cm]{Diagrams/galois.jpg}
+    \caption{Example for CRC generation}   
+\end{figure}
+
+So the algorithm is similar to long division and just uses additions one after another instead of 
+subtraction. 
+
+This algorithm can infact be simulated by a simple logic circuit. 
+
+
+% \section{Lotz left bro}
+
+
+% \section{Polynomial Arithmetic}
+
+% As done before in Galois fields, division is still defined using 
+% Addition (xor), multiplication (normal).
+
+% But encoding is now being done as the coeffiicent of Polynomials. 
+% For example, something like `110110' is encoded as \(x^5 + x^4 + x^2 + x\). 
+% In this context what does it mean for \(A(x)\) to be divisble by \(D(x)\), basically
+
+% \[A(x) = B(x)D(x)\]
+
+% Let's try to understand how to use this now, 
+
+% Say \(P(x)\) is the message to be sent (clear from before Polynomial is equivalent to bitstrings), lets say some bits get 
+% flipped in the Polynomial. The bits that get flipped corresponds to a polynomial \(E(x)\). 
+
+
+% So the total received message can be denoted as \(P(x) + E(x)\). 
+% Now if the generator is known across both devices which have the message and it also divides \(P(x)\), then 
+% error detection can be done by checking if \(P(x) + E(x)\) is divisible by \(C(x)\). 
+
+% For this method to work, \(E(x)\) is not divisible by \(C(x)\). But is this the case
+
+% \begin{itemize}
+%     \item \textbf{Single Error Bit:} E(x) = \(x^i\) for some i,
+%     Suppose \(C(x) = x^k + 1\)
+%     then \(C(x)\) cannot divide \(E(x)\), 
+
+%     To see why think of a divisor for this operation 
+%     \begin{align}
+%         C(x) D(x) &= x^i \\
+%         (x^n + \dots + 1)(x^m + \dots + x^q) &= x^i
+%     \end{align}
+
+%     The above is not possible.
+
+%     \item \textbf{Two Bit Errors:} 
+%     \(E(x) = x^j + x^i\), (j $>$ i)
+%     \(E(x) = x^i(x^{j-i} + 1)\)
+    
+%     Suppose \(C(x)\) is of the form \(x^k + \dots + 1\)
+
+%     Now again the problem reduces to if \(C(x)\) can divide \(P(x) + E(x)\), which 
+%     basically is asking if it can divide \(E(x)\). 
+
+%     \textbf{Order of a Polynomial:} The smallest `r' such that \(C(x)\) divides \(x^r + 1\) is called its order. 
+    
+%     Methods are known to find \(C(x)\) such that their orders are very high. 
+%     \textbf{Example:} k = 16, \(C(x) = x^{16} + \dots + 1\), then we can find \(c(x)\) s.t it will
+%     not divide any \(x^p + 1\), if \(p < 2^{16} - 1\). 
+
+%     \item \textbf{Odd number of Errors}
+%     \begin{enumerate}
+%         \item If \(C(x) = (1+x)(...)(...)\), this can catch all odd number of errors.
+%         \item If \(C(x)\) has even number of terms, it can also capture all odd number of errors. 
+%     \end{enumerate}
+%     Why is this true?
+%     \begin{enumerate}
+%         \item Assume that a Polynomial \(E(x)\) has an odd number of terms, \(E(1)\) is `1', since addition is xor.
+%         Similary \(C(1)\) is 0. Since the term \(1 + 1\) becomes 0. 
+
+%         Thus \(E(x)\)*\(D(x)\) = \(C(x)\) can never be true since the equation fails for \(x = 1\).
+        
+%         \item Similar argument applies to argue that \(C(1)\) is 0 when it has even number of terms.  
+%     \end{enumerate}
+
+%     \item \textbf{Burst of Errors}
+%     Many times, due to interference we have a consecutive sequence of bits which get flipped. 
+
+%     Thus \[E(x) = x^{i + l -1} + x^{x + l -2} + \dots + x^i\], which can also be 
+%     written as \((x^i)(x^{l-1} + x^{l-2} + \dots+ 1)\)
+
+%     If our carry is of form \(C(x) = x^k + x^{k-1} + x^{k-2} + \dots + 1\). 
+%     It can detect all burst errors of length less than l, since it cannot divide the error term. 
+     
+% \end{itemize}
+% \subsection{Some Polynomial CRC's}
+
+% CRC-32: \(x^{32} + x^{26} + x^{23} + x^{22} + x^{16} + x^{12} + x^{11} + x^{10} + x^{8} + x^{7} + x^{5} + x^{4} + x^{2} + x + 1 \)
+
+% \section{Media Access Control}
+
+% Media Access Control protocol takes care of managing shared resources over a network. It helps 
+% a device access the medium of communication (a wire, wireless tower) in-order to start transmitting data. 
+
+
+% To enable this functionality, the MAC protocol requires that each `Network Interface Card (NIC)' has a
+% unique MAC address. This is taken care by the manufacturer and hard coded into the card. 
+
+% MAC address come out of the size of 48 bits, so for the reasonable future we have enough address to get a MAC
+% address for all cards. 
+
+
+% \subsection{Interference}
+
+% What about interference? If it can be ensured that only one device uses the network at one time, then 
+% interference is taken care of. 
+
+% Possible methods:
+% \begin{itemize}
+%     \item \textbf{Frequency-Based:} Will different frequencies help? How to allocate different frequencies to devices?
+%     \item \textbf{Time-Based:} A leader device can be assigned such that it sends a special message to send to a device
+%     to indicate that it is their turn to send a message. The issue is that 
+%     if A doesn't use a time slot then that time is wasted. 
+%     \item \textbf{Token-Based:} There is a `token' message the owner of which is allowed to transfer messages. A 
+%     token release message is sent if a particular device wants to obtain the message and then communicate a message. This device waits 
+%     until it receives the token. 
+% \end{itemize}
+
+% The second one is a better option since it completely negates interference. A smart leader can also 
+% assign more time slots to a device if it sends a message with many packets.
+
 
 \end{document}
