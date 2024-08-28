@@ -1,6 +1,7 @@
-*.out
 *.aux
-*.log
+*.Zone.Identifier
+*.fls
+*.out
+*.fdb_latexmk
 *.gz
-*.tar.gz
-*.Identifier
+*.toc
