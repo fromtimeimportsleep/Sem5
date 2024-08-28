@@ -700,95 +700,99 @@ Note that here there is no carry in the addition, just bit by bit addition.
 So the algorithm is similar to long division and just uses additions one after another instead of 
 subtraction. 
 
-This algorithm can infact be simulated by a simple logic circuit. 
+This algorithm can in fact be simulated by a simple logic circuit. 
 
 
-% \section{Lotz left bro}
+How can this CRC be used for error correction at the receiver side?
+\begin{itemize}
+    \item If the received message on divison with the generator does not give 000 as a remainder then there is an error
+    \item Take the data part of the message and append 000 to it and perform division with the generator. If the remainder obtained from this does not match with the CRC there was an error in the transmission
+\end{itemize}
 
 
-% \section{Polynomial Arithmetic}
+\section{Polynomial Arithmetic}
 
-% As done before in Galois fields, division is still defined using 
-% Addition (xor), multiplication (normal).
+As done before in Galois fields, division is still defined using 
+Addition (xor), multiplication (normal).
 
-% But encoding is now being done as the coeffiicent of Polynomials. 
-% For example, something like `110110' is encoded as \(x^5 + x^4 + x^2 + x\). 
-% In this context what does it mean for \(A(x)\) to be divisble by \(D(x)\), basically
+But encoding is now being done as the coeffiicent of Polynomials. 
+For example, something like `110110' is encoded as \(x^5 + x^4 + x^2 + x\). 
+In this context what does it mean for \(A(x)\) to be divisble by \(D(x)\), basically
 
-% \[A(x) = B(x)D(x)\]
+\[A(x) = B(x)D(x)\]
 
-% Let's try to understand how to use this now, 
+Let's try to understand how to use this now, 
 
-% Say \(P(x)\) is the message to be sent (clear from before Polynomial is equivalent to bitstrings), lets say some bits get 
-% flipped in the Polynomial. The bits that get flipped corresponds to a polynomial \(E(x)\). 
+Say \(P(x)\) is the message to be sent (clear from before Polynomial is equivalent to bitstrings), lets say some bits get 
+flipped in the Polynomial. The bits that get flipped corresponds to a polynomial \(E(x)\). 
 
 
-% So the total received message can be denoted as \(P(x) + E(x)\). 
-% Now if the generator is known across both devices which have the message and it also divides \(P(x)\), then 
-% error detection can be done by checking if \(P(x) + E(x)\) is divisible by \(C(x)\). 
+So the total received message can be denoted as \(P(x) + E(x)\). 
+Now if the generator is known across both devices which have the message and it also divides \(P(x)\), then 
+error detection can be done by checking if \(P(x) + E(x)\) is divisible by \(C(x)\). 
 
-% For this method to work, \(E(x)\) is not divisible by \(C(x)\). But is this the case
+For this method to work, \(E(x)\) cannot be divisible by \(C(x)\). But is this the case?
 
-% \begin{itemize}
-%     \item \textbf{Single Error Bit:} E(x) = \(x^i\) for some i,
-%     Suppose \(C(x) = x^k + 1\)
-%     then \(C(x)\) cannot divide \(E(x)\), 
+\begin{itemize}
+    \item \textbf{Single Error Bit:} E(x) = \(x^i\) for some i,
+    Suppose \(C(x) = x^k + 1\)
+    then \(C(x)\) cannot divide \(E(x)\), 
 
-%     To see why think of a divisor for this operation 
-%     \begin{align}
-%         C(x) D(x) &= x^i \\
-%         (x^n + \dots + 1)(x^m + \dots + x^q) &= x^i
-%     \end{align}
+    To see why think of a divisor for this operation, say \(D(x)\)
+    \begin{align}
+        C(x) D(x) &= x^i \\
+        (x^n + \dots + 1)(x^m + \dots + x^q) &= x^i
+    \end{align}
 
-%     The above is not possible.
+    The above is not possible.
 
-%     \item \textbf{Two Bit Errors:} 
-%     \(E(x) = x^j + x^i\), (j $>$ i)
-%     \(E(x) = x^i(x^{j-i} + 1)\)
+    \item \textbf{Two Bit Errors:} 
+    \(E(x) = x^j + x^i\), (j $>$ i)
+    \(E(x) = x^i(x^{j-i} + 1)\)
     
-%     Suppose \(C(x)\) is of the form \(x^k + \dots + 1\)
+    Suppose \(C(x)\) is of the form \(x^k + \dots + 1\)
 
-%     Now again the problem reduces to if \(C(x)\) can divide \(P(x) + E(x)\), which 
-%     basically is asking if it can divide \(E(x)\). 
+    Now again the problem reduces to if \(C(x)\) can divide \(P(x) + E(x)\), which 
+    basically is asking if it can divide \(E(x)\). 
 
-%     \textbf{Order of a Polynomial:} The smallest `r' such that \(C(x)\) divides \(x^r + 1\) is called its order. 
+    \textbf{Order of a Polynomial:} The smallest `r' such that \(C(x)\) divides \(x^r + 1\) is called its order. 
     
-%     Methods are known to find \(C(x)\) such that their orders are very high. 
-%     \textbf{Example:} k = 16, \(C(x) = x^{16} + \dots + 1\), then we can find \(c(x)\) s.t it will
-%     not divide any \(x^p + 1\), if \(p < 2^{16} - 1\). 
+    Methods are known to find \(C(x)\) such that their orders are very high. 
+    \textbf{Example:} k = 16, \(C(x) = x^{16} + \dots + 1\), then we can find \(c(x)\) s.t it will
+    not divide any \(x^p + 1\), if \(p < 2^{16} - 1\). 
 
-%     \item \textbf{Odd number of Errors}
-%     \begin{enumerate}
-%         \item If \(C(x) = (1+x)(...)(...)\), this can catch all odd number of errors.
-%         \item If \(C(x)\) has even number of terms, it can also capture all odd number of errors. 
-%     \end{enumerate}
-%     Why is this true?
-%     \begin{enumerate}
-%         \item Assume that a Polynomial \(E(x)\) has an odd number of terms, \(E(1)\) is `1', since addition is xor.
-%         Similary \(C(1)\) is 0. Since the term \(1 + 1\) becomes 0. 
+    \item \textbf{Odd number of Errors}
+    \begin{enumerate}
+        \item If \(C(x) = (1+x)(...)(...)\), this can catch all odd number of errors.
+        \item If \(C(x)\) has even number of terms, it can also capture all odd number of errors. 
+    \end{enumerate}
+    Why is this true?
+    \begin{enumerate}
+        \item Assume that a Polynomial \(E(x)\) has an odd number of terms, \(E(1)\) is `1', since addition is xor.
+        Similary \(C(1)\) is 0. Since the term \(1 + 1\) becomes 0. 
 
-%         Thus \(E(x)\)*\(D(x)\) = \(C(x)\) can never be true since the equation fails for \(x = 1\).
+        Thus \(E(x)\)*\(D(x)\) = \(C(x)\) can never be true since the equation fails for \(x = 1\).
         
-%         \item Similar argument applies to argue that \(C(1)\) is 0 when it has even number of terms.  
-%     \end{enumerate}
+        \item Similar argument applies to argue that \(C(1)\) is 0 when it has even number of terms.  
+    \end{enumerate}
 
-%     \item \textbf{Burst of Errors}
-%     Many times, due to interference we have a consecutive sequence of bits which get flipped. 
+    \item \textbf{Burst of Errors}
+    Many times, due to interference we have a consecutive sequence of bits which get flipped. 
 
-%     Thus \[E(x) = x^{i + l -1} + x^{x + l -2} + \dots + x^i\], which can also be 
-%     written as \((x^i)(x^{l-1} + x^{l-2} + \dots+ 1)\)
+    Thus \[E(x) = x^{i + l -1} + x^{i + l -2} + \dots + x^i\], which can also be 
+    written as \((x^i)(x^{l-1} + x^{l-2} + \dots+ 1)\)
 
-%     If our carry is of form \(C(x) = x^k + x^{k-1} + x^{k-2} + \dots + 1\). 
-%     It can detect all burst errors of length less than l, since it cannot divide the error term. 
-     
-% \end{itemize}
-% \subsection{Some Polynomial CRC's}
+    If our carry is of form \(C(x) = x^k + x^{k-1} + x^{k-2} + \dots + 1\). 
+    It can detect all burst errors of length less than l, since it cannot divide the error term. 
+    If you are not convinced think of a dividend \(D(x)\) then \(E(x) = C(x)D(x)\), which is not possible. 
+\end{itemize}
+\subsection{Some Polynomial CRC's}
 
-% CRC-32: \(x^{32} + x^{26} + x^{23} + x^{22} + x^{16} + x^{12} + x^{11} + x^{10} + x^{8} + x^{7} + x^{5} + x^{4} + x^{2} + x + 1 \)
+CRC-32: \(x^{32} + x^{26} + x^{23} + x^{22} + x^{16} + x^{12} + x^{11} + x^{10} + x^{8} + x^{7} + x^{5} + x^{4} + x^{2} + x + 1 \)
 
 % \section{Media Access Control}
 
-% Media Access Control protocol takes care of managing shared resources over a network. It helps 
+% Media Access Control pro tocol takes care of managing shared resources over a network. It helps 
 % a device access the medium of communication (a wire, wireless tower) in-order to start transmitting data. 
 
 
