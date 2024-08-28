@@ -435,6 +435,11 @@ some frequency bands are licensed by different service providers and it is agree
 What about WiFi? Well, there are some bands which are unlicensed and can be used without any premium. However, here 
 again we have to worry about interference. 
 
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 6}
+    \end{center}
+}
 
 \subsubsection{MIMO}
 
@@ -518,6 +523,14 @@ clock and the bit to be sent.
     \label{fig:encoding}
 \end{figure}
 
+\newpage
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 7}
+    \end{center}
+}
+
+
 How to determine the polarity of the signal sent if the voltages are switched. 
 The last few bits of the preamble can be dedicated to determining the polarity of the signal. 
 Say they are 111, if 111 is received the polarity would be correct and else polarity needs to be flipped. 
@@ -567,6 +580,13 @@ amplitude.
 
 This is called the constellation diagram. 
 
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 8}
+    \end{center}
+}
+
+
 How to get the constellation diagram for a given signal? We can dot the given signal with \(e_x\) and \(e_y\) (ie)
 unit normal vectors of this vector space to get each component of the wave. 
 
@@ -589,6 +609,12 @@ This is called Binary Phase Shift Keying. Note that even with attenuation and
 white noise the amount the received signal shifts in a constellation diagram 
 is lesser and thus unlikely to cause a zero to be interpreted as a 1. 
 
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 9}
+    \end{center}
+}
 \subsection{QPSK encoding}
 
 The issue with BSPK is that a single signal/wave can only transmit one bit of information.
@@ -607,6 +633,13 @@ bits are diagonally opposite regions so that even if a misinterpretation does ha
 
 This idea of more regions being able to encode more bits can be expanded more however 
 the more regions it is split into, the more error prone the encoding becomes due the regions being more packed. 
+\newpage
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 10}
+    \end{center}
+}
 \part{Data Link Layer}
 \section{Introduction}
 The Data link layer deals with preparing a packet to be sent across 
@@ -677,6 +710,12 @@ This bitstring will be the valid bitstring closest to the one with errors. If th
 was not the case min hamming distance for the code is less than 2N+1, since the bitstring closest to the one with errors 
 and the corrected bitstring will have a hamming distance less than 2N+1. 
 
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 11}
+    \end{center}
+}
 \subsection{Galois Theory}
 
 A Galois field, named after the mathematician Évariste Galois, is a finite field that contains a set number of elements and supports operations of addition, subtraction, multiplication, and division (excluding division by zero). 
@@ -709,7 +748,11 @@ How can this CRC be used for error correction at the receiver side?
     \item Take the data part of the message and append 000 to it and perform division with the generator. If the remainder obtained from this does not match with the CRC there was an error in the transmission
 \end{itemize}
 
-
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 12}
+    \end{center}
+}
 \section{Polynomial Arithmetic}
 
 As done before in Galois fields, division is still defined using 
@@ -761,7 +804,7 @@ For this method to work, \(E(x)\) cannot be divisible by \(C(x)\). But is this t
     \textbf{Example:} k = 16, \(C(x) = x^{16} + \dots + 1\), then we can find \(c(x)\) s.t it will
     not divide any \(x^p + 1\), if \(p < 2^{16} - 1\). 
 
-    \item \textbf{Odd number of Errors}
+    \item \textbf{Odd number of Errors:}
     \begin{enumerate}
         \item If \(C(x) = (1+x)(...)(...)\), this can catch all odd number of errors.
         \item If \(C(x)\) has even number of terms, it can also capture all odd number of errors. 
@@ -776,7 +819,7 @@ For this method to work, \(E(x)\) cannot be divisible by \(C(x)\). But is this t
         \item Similar argument applies to argue that \(C(1)\) is 0 when it has even number of terms.  
     \end{enumerate}
 
-    \item \textbf{Burst of Errors}
+    \item \textbf{Burst of Errors:}
     Many times, due to interference we have a consecutive sequence of bits which get flipped. 
 
     Thus \[E(x) = x^{i + l -1} + x^{i + l -2} + \dots + x^i\], which can also be 
@@ -790,37 +833,55 @@ For this method to work, \(E(x)\) cannot be divisible by \(C(x)\). But is this t
 
 CRC-32: \(x^{32} + x^{26} + x^{23} + x^{22} + x^{16} + x^{12} + x^{11} + x^{10} + x^{8} + x^{7} + x^{5} + x^{4} + x^{2} + x + 1 \)
 
-% \section{Media Access Control}
 
-% Media Access Control pro tocol takes care of managing shared resources over a network. It helps 
-% a device access the medium of communication (a wire, wireless tower) in-order to start transmitting data. 
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 12}
+    \end{center}
+}
+\section{Media Access Control}
+
+Media Access Control protocol takes care of managing shared resources over a network. It helps 
+a device access the medium of communication (a wire, wireless tower) in-order to start transmitting data. 
+The protocol manages which device has control over the shared media so that multiple people don't use the network at once and thus 
+start to interfere with one another. 
+
+Also, there is a need for each need for each message to be addressed to the destination so that 
+the message can reach the receiver accurately, which is also taken care of by the MAC.
+
+One way to do this is to give a particular frequency bandwidth to each device as an identifier. 
+However, this method cannot easily accommodate the addition of new devices. Further it hampers the Bandwidth of the network as more 
+devices split up the available bandwidth.  
+To enable this functionality, the MAC protocol requires that each `Network Interface Card (NIC)' has a
+unique MAC address. This is taken care by the manufacturer and hard coded into the card. 
+
+MAC address come out of the size of 48 bits, so for the reasonable future we have enough address to get a MAC
+address for all cards. 
 
 
-% To enable this functionality, the MAC protocol requires that each `Network Interface Card (NIC)' has a
-% unique MAC address. This is taken care by the manufacturer and hard coded into the card. 
+\subsection{Interference}
 
-% MAC address come out of the size of 48 bits, so for the reasonable future we have enough address to get a MAC
-% address for all cards. 
+What about interference? If it can be ensured that only one device uses the network at one time, then 
+interference is taken care of. 
 
+Possible methods:
+\begin{itemize}
+    \item \textbf{Frequency-Based:} Will different frequencies help? How to allocate different frequencies to devices? This method however still has the Bandwidth issue mentioned earlier. 
+    \item \textbf{Time-Based:} A leader device can be assigned such that it sends a special message to send to a device
+    to indicate that it is their turn to send a message. The issue is that 
+    if A doesn't use a time slot then that time is wasted. 
+    \item \textbf{Token-Based:} There is a `token' message the owner of which is allowed to transfer messages. A 
+    token release message is sent if a particular device passes the token to the next device. The token release message has 
+    a identifier for the device which is going to receive the token. 
 
-% \subsection{Interference}
+    A common form of implementing the token system is to connect devices in a ring topology and have the 
+    token sent from one device to the next in a step by step fashion. In this system fairness is maintained since 
+    each system gets an opportunity to transmit its message within one cycle. 
 
-% What about interference? If it can be ensured that only one device uses the network at one time, then 
-% interference is taken care of. 
+\end{itemize}
 
-% Possible methods:
-% \begin{itemize}
-%     \item \textbf{Frequency-Based:} Will different frequencies help? How to allocate different frequencies to devices?
-%     \item \textbf{Time-Based:} A leader device can be assigned such that it sends a special message to send to a device
-%     to indicate that it is their turn to send a message. The issue is that 
-%     if A doesn't use a time slot then that time is wasted. 
-%     \item \textbf{Token-Based:} There is a `token' message the owner of which is allowed to transfer messages. A 
-%     token release message is sent if a particular device wants to obtain the message and then communicate a message. This device waits 
-%     until it receives the token. 
-% \end{itemize}
-
-% The second one is a better option since it completely negates interference. A smart leader can also 
-% assign more time slots to a device if it sends a message with many packets.
+The second one is a better option in some ways since it completely negates interference. A smart leader can also 
+assign more time slots to a device if it sends a message with many packets.
 
 
 \end{document}
