@@ -2,19 +2,15 @@
 
 ## Deadline dates here
 
-- CS339 PC Activity 2 - 24th Aug (SAT) 11:55pm
+- CS 378 Lab 3 (Design Document [25%]) - 6th Sep (FRI) 11:59 pm
 
-- CS 378 Lab 2 (Design Document [25%]) - 25th Aug (SUN) 11:59 pm <br />
-    (keep following piazza for clarifications) <br />
-    (design document is updated)
+- CS 378 Lab 3 (Final Code) - 10th Sep (TUE) 11:59 pm
 
-- CS 378 Lab 2 (Final Code) - 1st Sep (SUN) 11:59 pm
-
-- CS 348 Assignment 1 - 30th Aug (FRI) 11:59 pm
+- CS 348 Assignment 1 - 4th Sep (WED) 11:59 pm
 
 ## Tentitive Quiz dates here
 
-- CS 339 Quiz 1 - Aug 26th (MON) 3:45 PM to 4:40 PM
+- CS 355 Midsem - 9th Sep (MON) 2:00 PM to 5:00 PM
 
 ## Tips to use this repository
 
