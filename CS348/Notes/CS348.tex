@@ -837,7 +837,7 @@ CRC-32: \(x^{32} + x^{26} + x^{23} + x^{22} + x^{16} + x^{12} + x^{11} + x^{10} 
 
 \noindent\tbox{
     \begin{center}
-    \textbf{\Huge Lecture 12}
+    \textbf{\Huge Lecture 13}
     \end{center}
 }
 \section{Media Access Control}
@@ -883,6 +883,68 @@ Possible methods:
 
 The second one is a better option in some ways since it completely negates interference. A smart leader can also 
 assign more time slots to a device if it sends a message with many packets.
+
+
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 14}
+    \end{center}
+}
+\subsubsection{Frequency and time}
+
+There is a possibility to combine both frequency and time based methods to prevent 
+interference. Note that this is also a leader based system and we call the leader the `base station'. 
+
+Say a particular frequency band is assigned to a company\footnote{This is called a frame}. This band can 
+be split up into further smaller bands called sub-channels. Now these sub-channels can be further divided into time 
+chunks to entirely split up the frequency * time domain into a grid. 
+
+
+How to decide who uses which block in the grid? The base station sends a scheduling message before transmission
+to denote which frequency and time slot is used for which message. 
+
+Any user first synchronises with the base station for purposes like syncing up this clock. So they also 
+receive this scheduling message once they connect with the base station. 
+
+What is the point of all this hassle over simple time sharing? 
+Well clearly more information can be pumped through the system compared to when there is only 
+one user per time slot. 
+
+
+\textbf{Down-link:} When user receives data from the base station
+
+\textbf{Up-link:} User sends data to the base station
+
+
+\subsubsection{Issues with Central Coordinator}
+\begin{itemize}
+\item Single point of failure
+\item May not be possible in certain situations (when the bandwidth is unlicensed)
+\end{itemize}
+\subsection{No central coordinator}
+
+What are the wants from such a system?
+\begin{itemize}
+    \item \textbf{Plug and play:} need to be able to connect and disconnect any device from the network
+    \item No central coordinator exists
+\end{itemize}
+
+
+How to prevent interference without a coordinator?
+
+The idea is that if only one node transmits most of the time, then we rarely have collisions. 
+Why is a collision so bad? When multiple nodes transfer messages at the same time, they all interfere and become 
+meaningless and cannot be split up. 
+
+Main idea \(\rightarrow\) If there is a collision detected then stop transmitting. How to detect collisions?
+Since the combined signal will have a much higher energy, a collision can be detected by this increase in energy. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{Diagrams/collision.png}
+\end{figure}
 
 
 \end{document}

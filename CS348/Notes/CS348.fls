@@ -1101,6 +1101,11 @@ INPUT ./Diagrams/galois.jpg
 INPUT Diagrams/galois.jpg
 INPUT ./Diagrams/galois.jpg
 INPUT ./Diagrams/galois.jpg
+INPUT ./Diagrams/collision.png
+INPUT ./Diagrams/collision.png
+INPUT Diagrams/collision.png
+INPUT ./Diagrams/collision.png
+INPUT ./Diagrams/collision.png
 INPUT CS348.aux
 INPUT ./CS348.out
 INPUT ./CS348.out

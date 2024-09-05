@@ -36,3 +36,6 @@
 \contentsline {subsection}{\numberline {2.1}Some Polynomial CRC's}{24}{subsection.2.1}%
 \contentsline {section}{\numberline {3}Media Access Control}{24}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Interference}{24}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Frequency and time}{25}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Issues with Central Coordinator}{26}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}No central coordinator}{26}{subsection.3.2}%
