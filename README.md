@@ -2,15 +2,19 @@
 
 ## Deadline dates here
 
-- CS 378 Lab 3 (Design Document [25%]) - 6th Sep (FRI) 11:59 pm
+- CS 378 Lab 3 (Design Document [25%]) - 10th Sep (FRI) 11:59 PM
 
-- CS 378 Lab 3 (Final Code) - 10th Sep (TUE) 11:59 pm
+- CS 348 Assignment 2 - 12th Sep (WED) 11:59 PM
 
-- CS 348 Assignment 1 - 4th Sep (WED) 11:59 pm
+- CS 378 Lab 3 (Final Code) - 24th Sep (TUE) 11:59 PM
 
-## Tentitive Quiz dates here
+## Tentitive Midsem dates here
 
-- CS 355 Midsem - 9th Sep (MON) 2:00 PM to 5:00 PM
+- CS 355 - 9th Sep (MON) 2:00 PM to 5:00 PM
+
+- CS 348 - 14th Sep (SAT) 1:30 PM to 3:30 PM
+
+- CS 339 - 17th Sep (TUE) 1:30 PM to 3:30 PM
 
 ## Tips to use this repository
 
