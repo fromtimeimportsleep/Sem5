@@ -1126,6 +1126,11 @@ INPUT ./Diagrams/ethernet_frame.png
 INPUT Diagrams/ethernet_frame.png
 INPUT ./Diagrams/ethernet_frame.png
 INPUT ./Diagrams/ethernet_frame.png
+INPUT ./Diagrams/hidden_terminal.png
+INPUT ./Diagrams/hidden_terminal.png
+INPUT Diagrams/hidden_terminal.png
+INPUT ./Diagrams/hidden_terminal.png
+INPUT ./Diagrams/hidden_terminal.png
 INPUT CS348.aux
 INPUT ./CS348.out
 INPUT ./CS348.out
