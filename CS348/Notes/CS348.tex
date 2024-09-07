@@ -1100,7 +1100,7 @@ see a huge increase in energy when a collision occurs.
 How do we then decide if a transmission was successful? We use an acknowledgment message from the receiver. 
 Unless this (ACK) acknowledgment message was received, we retransmit. 
 
-\subsubsection{Handling the hidden terminal problem}
+\subsubsection{Virtual Carrier Sensing}
 
 \begin{figure}[H]
     \centering
@@ -1119,4 +1119,6 @@ receiver which must be within range. Thus it knows to remain silent during that 
 
 This system seems quite robust since now the problem of retransmission is divided into several levels. Receiving the 
 CTS ensures that the connection is established after which the device can completely focus on transmitting the data. 
+
+Note that this system is optional and can be switched off if needed. 
 \end{document}

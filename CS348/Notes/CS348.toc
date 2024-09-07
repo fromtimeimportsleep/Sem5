@@ -46,4 +46,4 @@
 \contentsline {subsubsection}{\numberline {3.2.5}Limits on frame size}{29}{subsubsection.3.2.5}%
 \contentsline {subsubsection}{\numberline {3.2.6}Format of an ethernet frame}{30}{subsubsection.3.2.6}%
 \contentsline {subsection}{\numberline {3.3}MAC in Wifi}{30}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Handling the hidden terminal problem}{31}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.1}Virtual Carrier Sensing}{31}{subsubsection.3.3.1}%
