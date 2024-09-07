@@ -863,16 +863,17 @@ address for all cards.
 \subsection{Interference}
 
 What about interference? If it can be ensured that only one device uses the network at one time, then 
-interference is taken care of. 
+interference is taken care of. However in some networks based on WiFi, ethernet allow collisions and have methods to 
+deal with them. We will look into those further. 
 
 Possible methods:
 \begin{itemize}
-    \item \textbf{Frequency-Based:} Will different frequencies help? How to allocate different frequencies to devices? This method however still has the Bandwidth issue mentioned earlier. 
+    \item \textbf{Frequency-Based:} Will different frequencies help? How to allocate different frequencies to devices? This method however still has the Bandwidth issue mentioned earlier. \textbf{Frequency Division Multiple Access}(FDMA)
     \item \textbf{Time-Based:} A leader device can be assigned such that it sends a special message to send to a device
     to indicate that it is their turn to send a message. The issue is that 
-    if A doesn't use a time slot then that time is wasted. 
+    if A doesn't use a time slot then that time is wasted. This is referred to as \textbf{Time Division Multiple Access}(TDMA)
     \item \textbf{Token-Based:} There is a `token' message the owner of which is allowed to transfer messages. A 
-    token release message is sent if a particular device passes the token to the next device. The token release message has 
+    token release message is sent if a particular device passes the token to the next device. The token release message(TRM) has 
     a identifier for the device which is going to receive the token. 
 
     A common form of implementing the token system is to connect devices in a ring topology and have the 
@@ -907,9 +908,15 @@ to denote which frequency and time slot is used for which message.
 Any user first synchronises with the base station for purposes like syncing up this clock. So they also 
 receive this scheduling message once they connect with the base station. 
 
+
+This method of avoiding interference is called \textbf{Orthogonal Frequency Division Multiple Access}
 What is the point of all this hassle over simple time sharing? 
 Well clearly more information can be pumped through the system compared to when there is only 
-one user per time slot. 
+one user per time slot.
+%  Another advantage is that some links may have lesser attenation at a particular frequency and 
+% this value maybe different for multiple links. 
+% \textbf{OFDMA} enables us to exploit this 
+% differences and use frequencies which have the least attenuation for a link. 
 
 
 \textbf{Down-link:} When user receives data from the base station
@@ -945,6 +952,130 @@ Since the combined signal will have a much higher energy, a collision can be det
     \centering
     \includegraphics[width=10cm]{Diagrams/collision.png}
 \end{figure}
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 15}
+    \end{center}
+}
+\subsubsection{Carrier sense Multiple Access (CSMA)}
+This is the MAC policy used in ethernet to prevent interference.
+Again as discussed before the sudden increase in energy when a collision 
+occurs can be used for collisions detection. In carrier sensing the 
+device probes the medium/link to see if some other device is using the medium 
+to transmit a message and waits for the channel to get free before transmission. 
+
+This is referred to as \textit{carrier sensing}. There are two approaches the 
+protocol can take to deal with collisions
+
+\begin{itemize}
+    \item \textbf{Collision Detection:} A message is sent till a collision is 
+    detected, after a collision is detected transmission is stopped and the message is resent. 
+    \item \textbf{Collision Avoidance:} A message is sent such that collisions are avoided completely. 
+\end{itemize}
+
+\subsubsection{Collision Detection}
+
+There are still some issues with collision detection. So far, we rely on the 
+fact that if C is sending a message and it detects a collision then it can stop transmitting. 
+But what if the collisions starts occuring (spatially) farther away from the source of the message.
+
+
+Look at the figure given below, though not clear try to imagine a case where C sent a message(yellow) and it does not 
+detect the white message when sending. A collision happens later on(between C,D) which both A,C will not detect.
+
+To deal with this case we use a \textbf{Jamming Signal}. So when one device detects a collision like 
+in this case D, apart from stopping its own transmissions it also sends a jamming signal which informs all devices to stop transmitting and to 
+wait. 
+
+Thus the devices contributing to the collision get the message to stop and retransmit their message. 
+
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width = 10cm]{Diagrams/CD.png}
+\end{figure}
+
+\subsubsection{Random Wait time}
+There is another issue with the current form of CD\footnote{collision detection}. If A, B both send messages which 
+collide and both of them retransmit after a fixed interval after collision, then it is possible that A starts
+sending before B's message is seen and vice versa and the collision just occurs again. 
+
+To prevent this we allocate a random time to wait to each node after a CD. This random time can be split up 
+as \(R.\Delta\) where R is a random number from a uniform distribution chosen by the node(always integer). 
+
+Let us assume that R chosen by A, B differ by one. Now the time A waits after B started its 
+transmission is just \(\Delta\). All we want to make sure is that A can see B's message 
+before it is ready to transmit so that carrier sensing(don't forget this guy still exists :)) can make sure it waits till B is done to start transmitting. 
+
+It can be shown that if \(\Delta\) is more than the round trip time and \(R_a > R_b\) then b starts transmitting(and a senses it) before a starts respecting. 
+This makes sense since it takes a trip for the jamming signal to reach all devices and one more trip for the message from B to reach A. Thus \(\Delta\) can be
+put as a constant slightly greater than the highest possible value of RTT(round trip time) in a network. 
+
+\subsubsection{Flowchart to represent CSMA}
+The flowchart below represents the algorithm that is to be run at every node inorder to implement CSMA-CD. 
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=10cm]{Diagrams/CSMA.png}
+\end{figure}
+
+Some new things have been mentioned in the diagram. Let us see what those mean. 
+
+\textbf{Exponential Back-off:} The space of possible R values for the random wait time is intially kept to be small. 
+However, as the number of misses increases this range is doubled inorder to increase the probability that the difference between waiting times
+in two nodes is larger. This is called Exponential backoff. It helps to sacrifice by having delay in transmission incase retransmission efforts are continuosly 
+failing.  
+
+Also the reason to wait for \(9.6\mu s\) is to give some time for the receivers to process the frames from the senders. 
+
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 16}
+    \end{center}
+}
+
+\subsubsection{Limits on frame size}
+
+\textbf{Minimum Frame size:}
+
+Why must there be a minimum frame size? Assume A is sending a signal and then B detects it is a collision. To make 
+sure even A detects that there is a collision we must make sure that even if B's message starts just as A's message ends, 
+it still makes sure to collide with A. For this to be true A must be long enough that it 
+takes atleast RTT units of time to transmit it. To see why refer the diagram. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=10cm]{Diagrams/min_frame.png}
+\end{figure}
+
+Assuming that \(\Delta = 51.2\mu s\) as before and that rate of transmission is 
+10 MBps, we get that the frame must be 64 Bytes long. 
+
+
+    Minimum frame = {RTT} * Bitrate
+
+
+\textbf{Maximum Frame size:}
+
+The issue with having arbitrarily big frames is that the probability of 
+bit errors occuring grows with the size of the frame. Apart from this very big frames 
+take significant amounts of time to send and thus lead to one device 
+monopolising the network for long durations 
+
+\subsubsection{Format of an ethernet frame}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=10cm]{Diagrams/ethernet_frame.png}
+    \caption{Structure of an ethernet frame}
+\end{figure}
+
+
+\subsection{MAC in Wifi}
 
 
 \end{document}

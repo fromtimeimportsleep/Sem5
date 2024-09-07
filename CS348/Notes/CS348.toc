@@ -39,3 +39,10 @@
 \contentsline {subsubsection}{\numberline {3.1.1}Frequency and time}{25}{subsubsection.3.1.1}%
 \contentsline {subsubsection}{\numberline {3.1.2}Issues with Central Coordinator}{26}{subsubsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.2}No central coordinator}{26}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Carrier sense Multiple Access (CSMA)}{27}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Collision Detection}{27}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Random Wait time}{28}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Flowchart to represent CSMA}{28}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Limits on frame size}{29}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Format of an ethernet frame}{30}{subsubsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.3}MAC in Wifi}{30}{subsection.3.3}%
