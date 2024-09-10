@@ -10,8 +10,6 @@
 
 ## Tentitive Midsem dates here
 
-- CS 355 - 9th Sep (MON) 2:00 PM to 5:00 PM
-
 - CS 348 - 14th Sep (SAT) 1:30 PM to 3:30 PM
 
 - CS 339 - 17th Sep (TUE) 1:30 PM to 3:30 PM
