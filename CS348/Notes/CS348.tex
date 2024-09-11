@@ -15,6 +15,7 @@
 \usepackage{tabularx}
 \usepackage{multicol}
 \usepackage{tcolorbox}
+\usepackage{booktabs}
 \usepackage{xcolor}
 \lstset{language=C++,
     basicstyle=\ttfamily,
@@ -1121,4 +1122,192 @@ This system seems quite robust since now the problem of retransmission is divide
 CTS ensures that the connection is established after which the device can completely focus on transmitting the data. 
 
 Note that this system is optional and can be switched off if needed. 
+
+
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 17}
+    \end{center}
+}
+
+
+\subsubsection{Modulation in WiFi}
+Why would someone disable RTS, CTS is a question that comes up now. The RTS, CTS 
+blocks are much smaller than message and greatly reduce the possibility of collisions. 
+
+The issue is that RTS, CTS cannot afford to have bit errors and thus are send at much lower 
+modulation rates than the actual data which can deal with biterrors. BPSK is usually 
+the modulation used for RTS, CTS whereas QPSK is used for the acknowledgment and the actual data frame. 
+Thus at times especially when collisons occur rarely the tradeoff of having virtual carrier sensing is not 
+worth it and is switched off. 
+
+
+\subsubsection{Exposed Terminal problem}
+
+Consider devices A, B, C and D arranged as shown below. 
+
+\begin{figure}
+    \includegraphics{Diagrams/Exposed_terminal.png}
+\end{figure}
+
+Clearly in this case B\(\rightarrow\) A communication and C\( \rightarrow\)D communication can happen
+freely without interference. This is since A,C and B,D are not withing hearing ranges of each other. 
+
+However, with carrier sensing with/without RTS-CTS B transmits which is sensed by C and thus it is silent. 
+
+But the WiFI protocol does not bother with this case and is okay with making this tradeoff. 
+
+
+\subsubsection{DIFS and SIFS}
+
+If we observe the packet diagrams for example in section 3.3.1, we can notice that there 
+is a small gap between the RTS and CTS packets. Similarly between Data and acknowledgment. 
+
+This is referred to as SIFS (Short Inter Frame Spacing). Why is this gap necessary? 
+
+First of all the receiver receives some finite time to process each packet so a gap between these 
+packets is needed. Further in many NIC (Network interface Cards) the receiving and 
+transmission circuits are different and some finite time is required to swap from one to another.
+
+Now what an issue comes up. What if a device carrier senses the SIFS, assumes network is free and starts transmitting? 
+To prevent this and few other issues we also set a gap between two series of transmissions for a single 
+data packet. This is called the DIFS (or) Distributed Inter Frame Spacing. 
+
+Another point to note here is that in the wifi protocol time is divided into discrete intervals called slots. 
+
+We also make sure that while carrier sensing the device will make sure that the channel is free for atleast DIFS time 
+before starting a transmission. What does this do? First off all we will never start transmitting during an SIFS time period
+since we have to wait the channel to be free for atleast DIFS amount of time (DIFS > SIFS). 
+
+
+\subsubsection{Contention Window}
+Now obviously if all devices only wait for constant amount of time and then subsequently 
+start at the same time, we are asking for collisions. 
+
+Thus we want to make each device wait for a random amount of time. The difference between the waiting time of 
+two devices must be large enough that the later device must be able to hear the transmission of the 
+one who transmitted first so that it can carrier sense and wait for that transmission to get over. 
+
+The Contention window(CW) is the space of possible waiting time periods from which we randomly draw a sample. 
+It is initalised to a range of \((0,15)\) slots intially and is double at every failed attempt. 
+Why is it increased? An increased CW means the probability of the waiting times differing for two devices by a large amount is larger. Thus 
+we have a lesser possibility for a collision. However the CW is upper capped to 1023 slots. 
+
+Another thing to note. Let us say A, B both are ready to transmit and drew a random waiting time from the 
+contention window say 2, 4. Now A sends first and B waits for A to finish. Is it fair for B to again draw a random waiting time the 
+next time the medium is free? No, since B already waited for sometime. So B just continues with the new waiting time set to the remaining
+waiting time, 2 in this case. 
+
+
+This is implemented as follows, a variable is set to the random sample value and every idle time slot it is decremented by 1. 
+If it reaches 0 a message is transmitted and post transmission a new sample is drawn for the waiting time. 
+
+Fairness however is a slight issue here. Let us say that a device C has had 2 failed collisions, as mentioned before its Contention window doubles. 
+However if a device G now tries to transmit it is very likely to have a smaller waiting time and transmit first. 
+
+
+Empirically, he DIFS of the protocol is set to be \(\textbf{SIFS} + 2*\text{slot duration}\). 
+
+
+\textbf{Coding rate:} Just a random term. A coding rate of \(\frac{p}{q}\) implies that for every q bits sent, p of those are data bits and 
+q - p are bookkeeping/extra bits. 
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 18}
+
+    Not yet completely done
+    \end{center}
+}
+
+
+
+So far communication between two machines can only happen if they 
+are directly connected by a link. One huge problem with this is that when a machine sends a frame 
+all the other machines in the network/subnetwork hears that message. 
+
+A much smarter solution is to have several subnetworks that are connected by `smart links' which can connect appropriate subnetworks together 
+so that a minimal number of machines are a part of the communication path at any given time. From our 
+discussion on collisions it is easy to see that more machines will result in more collisions and thus be a bigger headache. 
+
+\section{Ethernet Switching}
+
+As mentioned before we have a smart link for connecting these `subnetworks'. These smart links 
+are called network switches. How do these work with the ethernet system? 
+
+Consider the scenario in the diagram,
+
+figure
+
+How do we know which device is connected to which port? Remeber that we also 
+need flexibility atleast to the point where we can remove a device from one port and connect it to another. 
+
+What if we maintain a table which is maintained manually by an admin? This requires a manual 
+update at every addition/port change for a device. Leaving up this much to a human being is basically asking for 
+mishaps to happen. Anything from a missed entry to a wrong entry can mess up the entire system. 
+
+\subsection{Automatic MAC address maintanence}
+The table mentioned above should preferably be maintained automatically. One possibility is to 
+add an entry in the table everytime a message is sent from a device. 
+
+Let us say A sends a message to B, then we can store A`s MAC address corresponding to the port which recieved the message and 
+we can have an expiry time for this entry. Once this expiry time has elapsed this entry is invalidated. 
+
+Note that the table is populated when a device is a \textbf{sender}, and the table is used when the device is a 
+\textbf{receiver}. 
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{l c r}
+    \toprule
+    Destination MAC & Port & expiry \\
+    \midrule
+    A & 1 & 12   \\
+    C & 1 & 10 \\
+    B & 0 & 14 \\
+    D & 0 & 9 \\
+    E & 1 & 13 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Example of MAC address table}
+\end{table}
+    
+
+\subsection{Loops in the network}
+
+What if A tries to send a message to B and B does not exist on the network? 
+The message is forwarded from every port connected to A and then the message just keeps getting forwarded and loops around in the 
+network. 
+
+These loops are undesirable and these messages unnecessarily occupy the network. One possible 
+idea to prevent this is called \textit{time to live}. Every packet has a portion allocated to track how many times it was 
+forwarded. If this number exceeds some fixed amount, then the packet is dropped. 
+
+\subsubsection{Spanning tree protocol}
+\textbf{STEPS:}
+\begin{enumerate}
+    \item Elect the Root Switch. This can also be controlled by the admin by configuring IP addresses appropriately
+    \item The root ports are detected (port in a switch closest to the root)
+    \item Disable some of the ports for forwarding Data Frames
+\end{enumerate}
+
+% Now how to we communicate to bridges regarding who the root is? Every port is 
+% assigned an ID which is made of two components. The first 2 Bytes is called the configuration ID and can 
+% be changed in a network. But the later 6 Bytes is the smallest MAC address across all devices connected on all 
+% ports of that bridge. 
+
+% Every bridge broadcasts a message of the form \((Y,d,X,PortId)\). 
+% \begin{itemize}
+%     \item \textbf{Y} - Who the device thinks they root is 
+%     \item \textbf{d} - Distance from assumed root
+%     \item \textbf{X} - Device who sent the message
+% \end{itemize}
+
+
+% Intially all the bridges assume they are the root and thus send a message of the form \((S_i, 0, S_i)\) where 
+% \(S_i\) is the bridge id (the configurable part of the ID). Eventually as bridges hear these messages they update their assumption, distances 
+% and eventually all of them know the true bridge and their distances from it.   
+
+
 \end{document}
