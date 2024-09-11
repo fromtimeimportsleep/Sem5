@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  11 SEP 2024 16:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.18)  11 SEP 2024 19:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -836,4 +836,284 @@ LaTeX Info: Redefining \nameref on input line 41.
 \openout5 = `CS348.toc'.
 
  [2]
-Overfull \hbox (6.79
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 53--58
+[] 
+ []
+
+<Diagrams/bus.png, id=288, 351.3125pt x 144.54pt>
+File: Diagrams/bus.png Graphic file (type png)
+<use Diagrams/bus.png>
+Package pdftex.def Info: Diagrams/bus.png  used on input line 85.
+(pdftex.def)             Requested size: 199.60895pt x 82.12619pt.
+<Diagrams/star.png, id=289, 244.915pt x 207.77625pt>
+File: Diagrams/star.png Graphic file (type png)
+<use Diagrams/star.png>
+Package pdftex.def Info: Diagrams/star.png  used on input line 91.
+(pdftex.def)             Requested size: 99.80447pt x 84.66885pt.
+[3]
+<Diagrams/switch.jpeg, id=296, 323.2075pt x 156.585pt>
+File: Diagrams/switch.jpeg Graphic file (type jpg)
+<use Diagrams/switch.jpeg>
+Package pdftex.def Info: Diagrams/switch.jpeg  used on input line 106.
+(pdftex.def)             Requested size: 227.62204pt x 110.27536pt.
+ [4 <./Diagrams/bus.png> <./Diagrams/star.png> <./Diagrams/switch.jpeg>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 146--151
+[] 
+ []
+
+[5] [6]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 229--234
+[] 
+ []
+
+[7]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 270--275
+[] 
+ []
+
+<Diagrams/headers.png, id=339, 646.415pt x 372.89313pt>
+File: Diagrams/headers.png Graphic file (type png)
+<use Diagrams/headers.png>
+Package pdftex.def Info: Diagrams/headers.png  used on input line 287.
+(pdftex.def)             Requested size: 284.52756pt x 164.13037pt.
+[8]pdfTeX warning (ext4): destination with the same identifier (name{section.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.306 \section{Physical Media}
+                               [9 <./Diagrams/headers.png>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 338--343
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.1.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.344 \subsection{Attenuation}
+                              pdfTeX warning (ext4): destination with the same identifier (name{subsection.1.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.375 \subsection{Absolute Power in decibel scale}
+                                                   [10]
+<Diagrams/attenuation.png, id=367, 573.14125pt x 365.86688pt>
+File: Diagrams/attenuation.png Graphic file (type png)
+<use Diagrams/attenuation.png>
+Package pdftex.def Info: Diagrams/attenuation.png  used on input line 385.
+(pdftex.def)             Requested size: 284.52756pt x 181.63222pt.
+<Diagrams/optic_attenation.png, id=368, 527.9725pt x 306.14375pt>
+File: Diagrams/optic_attenation.png Graphic file (type png)
+<use Diagrams/optic_attenation.png>
+Package pdftex.def Info: Diagrams/optic_attenation.png  used on input line 397.
+(pdftex.def)             Requested size: 284.52756pt x 164.9788pt.
+ [11 <./Diagrams/attenuation.png>]
+<Diagrams/wireless_attenuation.png, id=377, 597.23125pt x 357.335pt>
+File: Diagrams/wireless_attenuation.png Graphic file (type png)
+<use Diagrams/wireless_attenuation.png>
+Package pdftex.def Info: Diagrams/wireless_attenuation.png  used on input line 416.
+(pdftex.def)             Requested size: 426.79134pt x 255.36172pt.
+ [12 <./Diagrams/optic_attenation.png>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 440--445
+[] 
+ []
+
+[13 <./Diagrams/wireless_attenuation.png>]pdfTeX warning (ext4): destination with the same identifier (name{section.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.452 \section{Signalling}
+                           [14]pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.495 \subsection{Manchester coding}
+                                    
+<Diagrams/Manchester_Encoding.jpg, id=395, 301.125pt x 169.63374pt>
+File: Diagrams/Manchester_Encoding.jpg Graphic file (type jpg)
+<use Diagrams/Manchester_Encoding.jpg>
+Package pdftex.def Info: Diagrams/Manchester_Encoding.jpg  used on input line 523.
+(pdftex.def)             Requested size: 301.12425pt x 169.63332pt.
+ [15 <./Diagrams/Manchester_Encoding.jpg>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 529--534
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.542 \subsection{Differential Manchester Coding}
+                                                 pdfTeX warning (ext4): destination with the same identifier (name{section.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.553 ...on{Phase Modulation in wireless channels}
+                                                   [16]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 585--590
+[] 
+ []
+
+<Diagrams/BPSK.png, id=410, 533.995pt x 292.09125pt>
+File: Diagrams/BPSK.png Graphic file (type png)
+<use Diagrams/BPSK.png>
+Package pdftex.def Info: Diagrams/BPSK.png  used on input line 607.
+(pdftex.def)             Requested size: 284.52756pt x 155.64105pt.
+[17]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 615--620
+[] 
+ []
+
+<Diagrams/QPSK.png, id=415, 500.87125pt x 285.065pt>
+File: Diagrams/QPSK.png Graphic file (type png)
+<use Diagrams/QPSK.png>
+Package pdftex.def Info: Diagrams/QPSK.png  used on input line 632.
+(pdftex.def)             Requested size: 284.52756pt x 161.94066pt.
+[18 <./Diagrams/BPSK.png>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 640--645
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{section.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.646 \section{Introduction}
+                            pdfTeX warning (ext4): destination with the same identifier (name{subsection.1.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.657 \subsection{Bit stuffing}
+                                [19 <./Diagrams/QPSK.png>]pdfTeX warning (ext4): destination with the same identifier (name{subsection.1.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.668 \subsection{Cyclic redundancy check}
+                                          pdfTeX warning (ext4): destination with the same identifier (name{subsection.1.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.683 \subsection{Coding Theory}
+                                 [20]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 716--721
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.1.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.721 \subsection{Galois Theory}
+                                
+<Diagrams/galois.jpg, id=436, 646.415pt x 471.7625pt>
+File: Diagrams/galois.jpg Graphic file (type jpg)
+<use Diagrams/galois.jpg>
+Package pdftex.def Info: Diagrams/galois.jpg  used on input line 737.
+(pdftex.def)             Requested size: 284.52756pt x 207.64812pt.
+ [21]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 753--758
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{section.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.758 \section{Polynomial Arithmetic}
+                                      [22 <./Diagrams/galois.jpg>] [23]pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.834 \subsection{Some Polynomial CRC's}
+                                        
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 839--844
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{section.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.844 \section{Media Access Control}
+                                    pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.864 \subsection{Interference}
+                                [24]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 891--896
+[] 
+ []
+
+[25]pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.933 \subsection{No central coordinator}
+                                         
+<Diagrams/collision.png, id=472, 405.515pt x 269.005pt>
+File: Diagrams/collision.png Graphic file (type png)
+<use Diagrams/collision.png>
+Package pdftex.def Info: Diagrams/collision.png  used on input line 954.
+(pdftex.def)             Requested size: 284.52756pt x 188.74962pt.
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 957--962
+[] 
+ []
+
+[26 <./Diagrams/collision.png>]
+<Diagrams/CD.png, id=479, 442.15187pt x 258.9675pt>
+File: Diagrams/CD.png Graphic file (type png)
+<use Diagrams/CD.png>
+Package pdftex.def Info: Diagrams/CD.png  used on input line 999.
+(pdftex.def)             Requested size: 284.52756pt x 166.65536pt.
+ [27]
+<Diagrams/CSMA.png, id=486, 447.17062pt x 265.49188pt>
+File: Diagrams/CSMA.png Graphic file (type png)
+<use Diagrams/CSMA.png>
+Package pdftex.def Info: Diagrams/CSMA.png  used on input line 1022.
+(pdftex.def)             Requested size: 284.52756pt x 168.92981pt.
+ [28 <./Diagrams/CD.png>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1035--1040
+[] 
+ []
+
+<Diagrams/min_frame.png, id=496, 262.48062pt x 181.17688pt>
+File: Diagrams/min_frame.png Graphic file (type png)
+<use Diagrams/min_frame.png>
+Package pdftex.def Info: Diagrams/min_frame.png  used on input line 1053.
+(pdftex.def)             Requested size: 284.52756pt x 196.4007pt.
+[29 <./Diagrams/CSMA.png>]
+<Diagrams/ethernet_frame.png, id=505, 405.01312pt x 175.65625pt>
+File: Diagrams/ethernet_frame.png Graphic file (type png)
+<use Diagrams/ethernet_frame.png>
+Package pdftex.def Info: Diagrams/ethernet_frame.png  used on input line 1074.
+(pdftex.def)             Requested size: 284.52756pt x 123.40346pt.
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1079 \subsection{MAC in Wifi}
+                                [30 <./Diagrams/min_frame.png> <./Diagrams/ethernet_frame.png>]
+<Diagrams/hidden_terminal.png, id=517, 454.69875pt x 265.99374pt>
+File: Diagrams/hidden_terminal.png Graphic file (type png)
+<use Diagrams/hidden_terminal.png>
+Package pdftex.def Info: Diagrams/hidden_terminal.png  used on input line 1108.
+(pdftex.def)             Requested size: 426.79134pt x 249.67291pt.
+ [31 <./Diagrams/hidden_terminal.png>]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1128--1133
+[] 
+ []
+
+<Diagrams/Exposed_terminal.png, id=527, 416.05438pt x 156.08313pt>
+File: Diagrams/Exposed_terminal.png Graphic file (type png)
+<use Diagrams/Exposed_terminal.png>
+Package pdftex.def Info: Diagrams/Exposed_terminal.png  used on input line 1151.
+(pdftex.def)             Requested size: 416.05336pt x 156.08273pt.
+[32 <./Diagrams/Exposed_terminal.png>] [33]
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1216--1223
+[] 
+ []
+
+[34] [35] [36] (./CS348.aux)
+Package rerunfilecheck Info: File `CS348.out' has not changed.
+(rerunfilecheck)             Checksum: FF1B73A32F04BF12446AA97EF67886FD;9099.
+ ) 
+Here is how much of TeX's memory you used:
+ 29331 strings out of 478287
+ 588824 string characters out of 5849289
+ 949196 words of memory out of 5000000
+ 46888 multiletter control sequences out of 15000+600000
+ 477704 words of font info for 57 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 84i,10n,89p,436b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on CS348.pdf (36 pages, 4216300 bytes).
+PDF statistics:
+ 653 PDF objects out of 1000 (max. 8388607)
+ 536 compressed objects within 6 object streams
+ 130 named destinations out of 1000 (max. 500000)
+ 607 words of extra memory for PDF output out of 10000 (max. 10000000)
+

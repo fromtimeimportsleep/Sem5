@@ -816,7 +816,7 @@ For this method to work, \(E(x)\) cannot be divisible by \(C(x)\). But is this t
         \item Assume that a Polynomial \(E(x)\) has an odd number of terms, \(E(1)\) is `1', since addition is xor.
         Similary \(C(1)\) is 0. Since the term \(1 + 1\) becomes 0. 
 
-        Thus \(E(x)\)*\(D(x)\) = \(C(x)\) can never be true since the equation fails for \(x = 1\).
+        Thus \(C(x)\)*\(D(x)\) = \(E(x)\) can never be true since the equation fails for \(x = 1\).
         
         \item Similar argument applies to argue that \(C(1)\) is 0 when it has even number of terms.  
     \end{enumerate}
@@ -1011,7 +1011,7 @@ Let us assume that R chosen by A, B differ by one. Now the time A waits after B 
 transmission is just \(\Delta\). All we want to make sure is that A can see B's message 
 before it is ready to transmit so that carrier sensing(don't forget this guy still exists :)) can make sure it waits till B is done to start transmitting. 
 
-It can be shown that if \(\Delta\) is more than the round trip time and \(R_a > R_b\) then b starts transmitting(and a senses it) before a starts respecting. 
+It can be shown that if \(\Delta\) is more than the round trip time and \(R_a > R_b\) then b starts transmitting(and A senses it) before A starts respecting. 
 This makes sense since it takes a trip for the jamming signal to reach all devices and one more trip for the message from B to reach A. Thus \(\Delta\) can be
 put as a constant slightly greater than the highest possible value of RTT(round trip time) in a network. 
 
@@ -1147,7 +1147,7 @@ worth it and is switched off.
 
 Consider devices A, B, C and D arranged as shown below. 
 
-\begin{figure}
+\begin{figure}[H]
     \includegraphics{Diagrams/Exposed_terminal.png}
 \end{figure}
 
@@ -1178,7 +1178,7 @@ Another point to note here is that in the wifi protocol time is divided into dis
 
 We also make sure that while carrier sensing the device will make sure that the channel is free for atleast DIFS time 
 before starting a transmission. What does this do? First off all we will never start transmitting during an SIFS time period
-since we have to wait the channel to be free for atleast DIFS amount of time (DIFS > SIFS). 
+since we have to wait the channel to be free for atleast DIFS amount of time (DIFS $>$ SIFS). 
 
 
 \subsubsection{Contention Window}
