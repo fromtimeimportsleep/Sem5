@@ -2,9 +2,7 @@
 
 ## Deadline dates here
 
-- CS 378 Lab 3 (Design Document [25%]) - 10th Sep (FRI) 11:59 PM
-
-- CS 348 Assignment 2 - 12th Sep (WED) 11:59 PM
+- CS 348 Assignment 2 - 13th Sep (FRI) 11:59 PM
 
 - CS 378 Lab 3 (Final Code) - 24th Sep (TUE) 11:59 PM
 
