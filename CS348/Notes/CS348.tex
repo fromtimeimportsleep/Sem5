@@ -1216,8 +1216,6 @@ q - p are bookkeeping/extra bits.
 \noindent\tbox{
     \begin{center}
     \textbf{\Huge Lecture 18}
-
-    Not yet completely done
     \end{center}
 }
 
@@ -1238,7 +1236,10 @@ are called network switches. How do these work with the ethernet system?
 
 Consider the scenario in the diagram,
 
-figure
+\begin{figure}
+    \centering
+\includegraphics[width=12cm]{Diagrams/loops_ethernet.png}
+\end{figure}
 
 How do we know which device is connected to which port? Remeber that we also 
 need flexibility atleast to the point where we can remove a device from one port and connect it to another. 
@@ -1292,22 +1293,79 @@ forwarded. If this number exceeds some fixed amount, then the packet is dropped.
     \item Disable some of the ports for forwarding Data Frames
 \end{enumerate}
 
-% Now how to we communicate to bridges regarding who the root is? Every port is 
-% assigned an ID which is made of two components. The first 2 Bytes is called the configuration ID and can 
-% be changed in a network. But the later 6 Bytes is the smallest MAC address across all devices connected on all 
-% ports of that bridge. 
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 19}
+    \end{center}
+}
 
-% Every bridge broadcasts a message of the form \((Y,d,X,PortId)\). 
-% \begin{itemize}
-%     \item \textbf{Y} - Who the device thinks they root is 
-%     \item \textbf{d} - Distance from assumed root
-%     \item \textbf{X} - Device who sent the message
-% \end{itemize}
+Now how to we communicate to bridges regarding who the root bridge is? Every bridge is 
+assigned an ID which is made of two components. The first 2 Bytes is called the configuration ID and can 
+be changed in a network. But the later 6 Bytes is the smallest MAC address across all devices connected on all 
+ports of that bridge. 
+
+The configurable part helps us to force to make a particular bridge as a route. The Bridge with the smallest bridge 
+ID becomes the root.  
+
+Every bridge broadcasts a message of the form \((Y,d,X,PortId)\). 
+\begin{itemize}
+    \item \textbf{Y} - Who the device thinks they root is 
+    \item \textbf{d} - Distance from assumed root
+    \item \textbf{X} - Device who sent the message
+\end{itemize}
 
 
-% Intially all the bridges assume they are the root and thus send a message of the form \((S_i, 0, S_i)\) where 
-% \(S_i\) is the bridge id (the configurable part of the ID). Eventually as bridges hear these messages they update their assumption, distances 
-% and eventually all of them know the true bridge and their distances from it.   
+Intially all the bridges assume they are the root and thus send a message of the form \((S_i, 0, S_i)\) where 
+\(S_i\) is the bridge id (the configurable part of the ID). Eventually as bridges hear these messages they update their assumption, distances 
+and eventually all of them know the true bridge and their distances from it.   
 
 
+Once this information is known, we also know the distances of each port from the root. If there is a unique closest port, then we choose that port. 
+Else we choose the port that is connected to the bridge with the smallest id(tiebreaker rule). 
+
+For each subnetwork we find the designated port, (ie) the port which connects it to the bridge closest to the root. If multiple 
+ports have the same distance, ties are broken on basis of the sizes of the MAC address. 
+
+Any port which is not the root port of a bridge (or) the designated port of a subnetwork is disabled. Thus every subnetwork is connected to a port and all ports 
+have a root port connecting it to the spanning tree. 
+
+\noindent\tbox{
+    \begin{center}
+    \textbf{\Huge Lecture 20}
+
+    Not yet completely done
+    \end{center}
+}
+
+\section{Issues with Ethernet Switching}
+
+\begin{itemize}
+\item MAC addresses are given to a hardware at the time of manufacturing. Thus the addresses of all the devices in a network 
+is spread all over the place. There is no common addressing scheme that addresses the devices close by with similar addresses 
+ \item If all the devices are directly connected with ethernet switching, when a 
+ root/link fails then the entire spanning algorithm has to be run again. This may happen often in larger 
+ networks since there are more nodes which can possibly fail
+ \item Paths for data flow is not optimal since every packet travels up the tree to reach the root and then 
+ down the tree to reach the destination
+ \item Broadcasts in the network happen often, but a broadcast or particular message transfers from one  
+ end of the network to another is very expensive
+\end{itemize}
+
+These issues make the current system not so scaleable. 
+
+\part{Network layer}
+
+In this layer there is an universal addressing scheme. The addressing is called the IP address scheme. 
+We may have seen numbers like `62.5.7.20' to denote IP addresses. These are 32 bit 
+addresses written in human readable form. Each byte is seperated by a `.'.
+
+How are these addresses assigned? A subnetwork is assigned an address like `10.22.*.*'. 
+Every machine in the subnetwork must have its prefix match with the networks address. The `*' can be replaced by anything. 
+
+Why is this good? Now the address has an hierarchy built into it. The first few bits denote at a very big granularity 
+the location of the device. As the message gets closer to the device more bits are looked at 
+to figure out where this device is.
+
+Obviously hardware addresses cannot have IP configured since the device's location would affect this address. Thus this address needs to be 
+figured out manually or with the help of some protocols.    
 \end{document}

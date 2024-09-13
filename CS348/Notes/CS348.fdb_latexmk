@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1726063572 "/home/shriram/Sem5/CS348/Notes/CS348.tex" "CS348.pdf" "CS348" 1726063622
+["pdflatex"] 1726231582 "/home/shriram/Sem5/CS348/Notes/CS348.tex" "CS348.pdf" "CS348" 1726231631
   "/etc/texmf/web2c/texmf.cnf" 1704997916 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/shriram/Sem5/CS348/Notes/CS348.tex" 1726063571 60194 b65509b67a34ac0a280aae1e81c4d5a8 ""
+  "/home/shriram/Sem5/CS348/Notes/CS348.tex" 1726231581 63152 7ec2b4ccf72b3f2ac9b159693e97a6c7 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -208,10 +208,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1704997939 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710732876 2800663 7edcbdd15dbee02be5ae1436d214ceb7 ""
-  "CS348.aux" 1726063622 10960 a8d2eb2d01f6fd137d8c37c992aa05ed "pdflatex"
-  "CS348.out" 1726063622 9099 ff1b73a32f04bf12446aa97ef67886fd "pdflatex"
-  "CS348.tex" 1726063571 60194 b65509b67a34ac0a280aae1e81c4d5a8 ""
-  "CS348.toc" 1726063622 4919 926c9c6ac64f54c22487d0c12732031f "pdflatex"
+  "CS348.aux" 1726231631 11199 d9c090bd28aa35e7a872a7cfc996a8ea "pdflatex"
+  "CS348.out" 1726231631 9435 5432a7f4bc463ed2c5f0c717e315ced1 "pdflatex"
+  "CS348.tex" 1726231581 63152 7ec2b4ccf72b3f2ac9b159693e97a6c7 ""
+  "CS348.toc" 1726231631 5073 b9a1c0cd16e8557c627cd7719cfda703 "pdflatex"
   "Diagrams/BPSK.png" 1724779318 603195 7c021dd45d5fd9b7871070674eb2b758 ""
   "Diagrams/CD.png" 1725711391 490208 f496aa1a4139ac0f4970d4169411bf31 ""
   "Diagrams/CSMA.png" 1725722930 502926 c277777a3c4fc4a5dbbc8dc7b777cadc ""
@@ -225,6 +225,7 @@
   "Diagrams/galois.jpg" 1724783478 27967 0c61356068bf5496828a33f30e298997 ""
   "Diagrams/headers.png" 1723053941 1062842 eda5177b952dfb8272d9b5cdfd8c22e6 ""
   "Diagrams/hidden_terminal.png" 1725725111 507430 6a17a09d9e555341820df1277bad590b ""
+  "Diagrams/loops_ethernet.png" 1726231259 981126 fcb77121e8585b72cf01ee5bbda7da19 ""
   "Diagrams/min_frame.png" 1725723657 212798 cde91defa542ac9be7392279135efbf3 ""
   "Diagrams/optic_attenation.png" 1723051037 603680 0bc4d3c0acb0ae52f3855421737091c7 ""
   "Diagrams/star.png" 1722530533 5410 71c966dfab3745f14c191677a1cf7237 ""

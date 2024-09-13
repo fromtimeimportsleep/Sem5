@@ -1149,6 +1149,11 @@ INPUT ./Diagrams/Exposed_terminal.png
 INPUT ./Diagrams/Exposed_terminal.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
+INPUT ./Diagrams/loops_ethernet.png
+INPUT ./Diagrams/loops_ethernet.png
+INPUT Diagrams/loops_ethernet.png
+INPUT ./Diagrams/loops_ethernet.png
+INPUT ./Diagrams/loops_ethernet.png
 INPUT CS348.aux
 INPUT ./CS348.out
 INPUT ./CS348.out
