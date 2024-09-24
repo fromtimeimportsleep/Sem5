@@ -1,0 +1,22 @@
+#lang sicp
+
+; =============== CS339 Autumn 2024 =================
+
+(define-syntax delay
+  (syntax-rules ()
+    ((delay expr) (lambda () expr))))
+
+(define-syntax cons-stream
+  (syntax-rules ()
+    ((cons-stream a b) (cons a (delay b)))))
+
+(define (stream-car s)
+  (car s))
+
+(define (force promise) (promise))
+
+(define (stream-cdr s) (force (cdr s)))
+
+(define the-empty-stream '())
+
+(define (stream-null? s) (eq? s the-empty-stream))

@@ -2,15 +2,16 @@
 
 ## Deadline dates here
 
-- CS 348 Assignment 2 - 13th Sep (FRI) 11:59 PM
+- CS 339 Midsem Crib form - 26th Sep (THU) 11:59 PM <br>
+(Crib form: https://forms.gle/GxZqJs2LBNWpPjBGA, Marking scheme: ./CS339/Question Papers/Midsem_Marking_Scheme.pdf)
 
-- CS 378 Lab 3 (Final Code) - 24th Sep (TUE) 11:59 PM
+- CS 378 Lab 3 (Final Code) - 1st Oct (TUE) 11:59 PM
 
-## Tentitive Midsem dates here
+## Tentitive exam dates
 
-- CS 348 - 14th Sep (SAT) 1:30 PM to 3:30 PM
+- CS 339 quiz 2 - 14th Oct (MON)
 
-- CS 339 - 17th Sep (TUE) 1:30 PM to 3:30 PM
+- CS 355 Lab exam 2 - 28th Oct (MON)
 
 ## Tips to use this repository
 
