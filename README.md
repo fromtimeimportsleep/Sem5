@@ -2,10 +2,8 @@
 
 ## Deadline dates here
 
-- CS 339 Midsem Crib form - 26th Sep (THU) 11:59 PM <br>
-(Crib form: https://forms.gle/GxZqJs2LBNWpPjBGA, Marking scheme: ./CS339/Question Papers/Midsem_Marking_Scheme.pdf)
-
 - CS 378 Lab 3 (Final Code) - 1st Oct (TUE) 11:59 PM
+                            (problem statement modified on 24th Sep (TUE))
 
 ## Tentitive exam dates
 
