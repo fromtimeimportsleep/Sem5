@@ -2,8 +2,7 @@
 
 ## Deadline dates here
 
-- CS 378 Lab 3 (Final Code) - 1st Oct (TUE) 11:59 PM
-                            (problem statement modified on 24th Sep (TUE))
+- CS 348 Homework 3 - 11th Oct (FRI)
 
 ## Tentitive exam dates
 
