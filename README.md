@@ -4,6 +4,8 @@
 
 - CS 348 Homework 3 - 11th Oct (FRI)
 
+- CS 378 Lab 5 - 15th Oct (Tue)
+
 ## Tentitive exam dates
 
 - CS 339 quiz 2 - 14th Oct (MON)
