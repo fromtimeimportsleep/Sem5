@@ -2,9 +2,10 @@
 
 ## Deadline dates here
 
-- CS 348 Homework 3 - 11th Oct (FRI)
+- CS 348 Homework 3 - 13th Oct (Sun) 11:59 pm
 
-- CS 378 Lab 5 - 15th Oct (Tue)
+- CS 378 Lab 5 - 15th Oct (Tue) 11:59 pm <br>
+            (Anouncement: assume that Router IDs are in increasing order for routers: A,B,C,....,J)
 
 ## Tentitive exam dates
 
