@@ -9,7 +9,12 @@
 
 ## Tentitive exam dates
 
-- CS 339 quiz 2 - 14th Oct (MON)
+- CS 339 quiz 2 - 14th Oct (MON) <br>
+            (Syllabus: Lect 19 to Lect 29: <br>
+             Lect 19, 25 - Notes <br>
+             Lect 20, 21, 27 - Code <br>
+             Lect 22, 23, 24, 26, 28 - Slides <br>
+             Lect 29 - Unknown)
 
 - CS 355 Lab exam 2 - 28th Oct (MON)
 
