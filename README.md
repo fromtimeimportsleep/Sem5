@@ -2,21 +2,13 @@
 
 ## Deadline dates here
 
-- CS 348 Homework 3 - 13th Oct (Sun) 11:59 pm
-
-- CS 378 Lab 5 - 15th Oct (Tue) 11:59 pm <br>
-            (Anouncement: assume that Router IDs are in increasing order for routers: A,B,C,....,J)
-
 ## Tentitive exam dates
 
-- CS 339 quiz 2 - 14th Oct (MON) <br>
-            (Syllabus: Lect 19 to Lect 29: <br>
-             Lect 19, 25 - Notes <br>
-             Lect 20, 21, 27 - Code <br>
-             Lect 22, 23, 24, 26, 28 - Slides <br>
-             Lect 29 - Unknown)
-
 - CS 355 Lab exam 2 - 28th Oct (MON)
+
+- CS 348 Endsem - 11th Nov (Mon) 1:30pm - 4:30 pm
+
+- CS 339 Endsem - 12th Nov (Tue) 1:30pm - 4:30 pm
 
 ## Tips to use this repository
 
