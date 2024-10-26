@@ -2,9 +2,14 @@
 
 ## Deadline dates here
 
+- CS 378 Lab 7 - 29th Oct (TUE) 11:59 pm
+
+- CS 348 HW 4 - 2nd Nov (SAT) 11:59 pm
+
 ## Tentitive exam dates
 
-- CS 355 Lab exam 2 - 28th Oct (MON)
+- CS 355 Lab exam 2 - 28th Oct (MON) <br>
+                        (PYQ in CS355/PYQs/Endsem-23.pdf)
 
 - CS 348 Endsem - 11th Nov (Mon) 1:30pm - 4:30 pm
 
