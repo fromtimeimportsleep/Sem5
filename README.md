@@ -2,9 +2,9 @@
 
 ## Deadline dates here
 
-- CS 348 HW 4 - 2nd Nov (SAT) 11:59 pm
+- CS 348 HW 4 - 4th Nov (Mon) 11:59 pm
 
-- CS 378 Lab 8 - 5th Nov (TUE) 11:59 pm
+- CS 378 Lab 8 - 5th Nov (Tue) 11:59 pm
 
 ## Tentitive exam dates
 
