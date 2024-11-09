@@ -2,15 +2,14 @@
 
 ## Deadline dates here
 
-- CS 348 HW 4 - 4th Nov (Mon) 11:59 pm
-
-- CS 378 Lab 8 - 5th Nov (Tue) 11:59 pm
+- All Done :)
 
 ## Tentitive exam dates
 
-- CS 348 Endsem - 11th Nov (Mon) 1:30pm - 4:30 pm
+- CS 348 Endsem - 11th Nov (Mon) 1:30pm - 4:30 pm <br>
+(seating arrangement : https://docs.google.com/spreadsheets/d/1KQnYvcIJEdZTkpMPTDd6BlXqU7L3YBvW/edit?gid=1514732743#gid=1514732743)
 
-- CS 339 Endsem - 12th Nov (Tue) 1:30pm - 4:30 pm
+- CS 339 Endsem - 12th Nov (Tue) 1:30pm - 4:30 pm ()
 
 ## Tips to use this repository
 
