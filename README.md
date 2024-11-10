@@ -4,6 +4,16 @@
 
 - All Done :)
 
+## To know
+
+- Endsem solutions added
+
+- ⁠Some Class notes in CS348/Notes/Class Notes/
+
+- ⁠⁠Video notes in CS348/Notes/Scribes(YT_Videos)/
+
+- TCP cubic in CS348/Notes/Others/ (use ctrl+shift+V for preview)
+
 ## Tentitive exam dates
 
 - CS 348 Endsem - 11th Nov (Mon) 1:30pm - 4:30 pm <br>
