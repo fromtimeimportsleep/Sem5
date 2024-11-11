@@ -2,15 +2,24 @@
 
 ## Deadline dates here
 
-- CS 348 HW 4 - 2nd Nov (SAT) 11:59 pm
+- All Done :)
 
-- CS 378 Lab 8 - 5th Nov (TUE) 11:59 pm
+## To know
+
+- Endsem solutions added
+
+- ⁠Some Class notes in CS348/Notes/Class Notes/
+
+- ⁠⁠Video notes in CS348/Notes/Scribes(YT_Videos)/
+
+- TCP cubic in CS348/Notes/Others/ (use ctrl+shift+V for preview)
 
 ## Tentitive exam dates
 
-- CS 348 Endsem - 11th Nov (Mon) 1:30pm - 4:30 pm
+- CS 348 Endsem - 11th Nov (Mon) 1:30pm - 4:30 pm <br>
+(seating arrangement : https://docs.google.com/spreadsheets/d/1KQnYvcIJEdZTkpMPTDd6BlXqU7L3YBvW/edit?gid=1514732743#gid=1514732743)
 
-- CS 339 Endsem - 12th Nov (Tue) 1:30pm - 4:30 pm
+- CS 339 Endsem - 12th Nov (Tue) 1:30pm - 4:30 pm ()
 
 ## Tips to use this repository
 
