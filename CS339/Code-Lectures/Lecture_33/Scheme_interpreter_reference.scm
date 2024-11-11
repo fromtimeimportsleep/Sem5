@@ -7,29 +7,36 @@
                                        env))
         ((begin? exp)
          (eval-sequence (begin-actions exp) env))
-        ((cond? exp) (myeval (cond->if exp) env)) ((application? exp)
-                                                 (myapply (myeval (operator exp) env) (list-of-values (operands exp) env)))
+        ((cond? exp) (myeval (cond->if exp) env))
+        ((application? exp)
+         (myapply (myeval (operator exp) env)
+                  (list-of-values (operands exp) env)))
         (else
          (error "Unknown expression type: myeval" exp))))
 
 (define (myapply procedure arguments)
   (cond ((primitive-procedure? procedure)
-                                           (apply-primitive-procedure procedure arguments))
-                                          ((compound-procedure? procedure) (eval-sequence
-(procedure-body procedure) (extend-environment
-(procedure-parameters procedure) arguments
-(procedure-environment procedure))))
-(else (error
-          "Unknown procedure type: myapply" procedure))))
+         (apply-primitive-procedure 
+         procedure
+          arguments))
+        ((compound-procedure? procedure)
+         (eval-sequence
+          (procedure-body procedure) 
+          (extend-environment
+            (procedure-parameters procedure)
+             arguments
+            (procedure-environment procedure))))
+        (else (error "Unknown procedure type: myapply" procedure))))
 
-(define (list-of-values exps env) (if (no-operands? exps)
-                                      '()
-                                      (cons (myeval (first-operand exps) env)
-                                            (list-of-values (rest-operands exps) env))))
+(define (list-of-values exps env) 
+  (if (no-operands? exps) '()
+      (cons (myeval (first-operand exps) env)
+            (list-of-values (rest-operands exps) env))))
 
 (define (eval-if exp env)
   (if (true? (myeval (if-predicate exp) env))
-      (myeval (if-consequent exp) env) (myeval (if-alternative exp) env)))
+      (myeval (if-consequent exp) env) 
+      (myeval (if-alternative exp) env)))
 
 
 (define (eval-sequence exps env) (cond ((last-exp? exps)
@@ -149,14 +156,13 @@
     (if (eq? env the-empty-environment)
         (error "Unbound variable: SET!" var)
         (let ((frame (first-frame env)))
-                                                                                                                       (scan (frame-variables frame) (frame-values frame)))))
+         (scan (frame-variables frame) (frame-values frame)))))
   (env-loop env))
 
 (define (define-variable! var val env)
   (let ((frame (first-frame env)))
     (define (scan vars vals)
-      (cond ((null? vars)
-             (add-binding-to-frame! var val frame))
+      (cond ((null? vars) (add-binding-to-frame! var val frame))
             ((eq? var (car vars)) (set-car! vals val))
             (else (scan (cdr vars) (cdr vals)))))
     (scan (frame-variables frame) (frame-values frame))))
@@ -173,9 +179,11 @@
                                    (list '+ +)
                                    (list '- -)
                                    (list '* *)
-                                   (list '/ /)))
+                                   (list '/ /)
+                                   (list '= =)))
 (define (primitive-procedure-names)
   (map car primitive-procedures))
+
 (define (primitive-procedure-objects)
   (map (lambda (proc)
          (list 'primitive (cadr proc)))

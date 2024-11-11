@@ -17,23 +17,27 @@
 
 (define (myapply procedure arguments env)
   (cond ((primitive-procedure? procedure)
-         (apply-primitive-procedure procedure arguments))
+         (apply-primitive-procedure 
+         procedure 
+         arguments))
         ((compound-procedure? procedure)
-         (eval-sequence (procedure-body procedure)
-                        (extend-environment
-                          (procedure-parameters procedure)
-                          arguments
-                          env)))
+         (eval-sequence 
+          (procedure-body procedure)
+          (extend-environment
+            (procedure-parameters procedure)
+            arguments
+            env)))
         (else (error "Unknown procedure type: myapply" procedure))))
 
-(define (list-of-values exps env) (if (no-operands? exps)
-                                      '()
-                                      (cons (myeval (first-operand exps) env)
-                                            (list-of-values (rest-operands exps) env))))
+(define (list-of-values exps env) 
+  (if (no-operands? exps) '()
+      (cons (myeval (first-operand exps) env)
+            (list-of-values (rest-operands exps) env))))
 
 (define (eval-if exp env)
   (if (true? (myeval (if-predicate exp) env))
-      (myeval (if-consequent exp) env) (myeval (if-alternative exp) env)))
+      (myeval (if-consequent exp) env) 
+      (myeval (if-alternative exp) env)))
 
 
 (define (eval-sequence exps env) (cond ((last-exp? exps)
@@ -143,18 +147,26 @@
                                                                                                                (scan (frame-variables frame) (frame-values frame)))))
   (env-loop env))
 
-(define (set-variable-value! var val env) (define (env-loop env)
-
-                                            (define (scan vars vals) (cond ((null? vars)
-                                                                            (env-loop (enclosing-environment env))) ((eq? var (car vars)) (set-car! vals val)) (else (scan (cdr vars) (cdr vals)))))
-                                            (if (eq? env the-empty-environment) (error "Unbound variable: SET!" var) (let ((frame (first-frame env)))
-                                                                                                                       (scan (frame-variables frame) (frame-values frame)))))
+(define (set-variable-value! var val env) 
+  (define (env-loop env)
+    (define (scan vars vals) 
+      (cond ((null? vars)
+             (env-loop (enclosing-environment env))) 
+            ((eq? var (car vars)) (set-car! vals val)) 
+            (else (scan (cdr vars) (cdr vals)))))
+    (if (eq? env the-empty-environment) 
+        (error "Unbound variable: SET!" var) 
+        (let ((frame (first-frame env)))
+         (scan (frame-variables frame) (frame-values frame)))))
   (env-loop env))
 
-(define (define-variable! var val env) (let ((frame (first-frame env)))
-                                         (define (scan vars vals) (cond ((null? vars)
-                                                                         (add-binding-to-frame! var val frame)) ((eq? var (car vars)) (set-car! vals val)) (else (scan (cdr vars) (cdr vals)))))
-                                         (scan (frame-variables frame) (frame-values frame))))
+(define (define-variable! var val env) 
+  (let ((frame (first-frame env)))
+    (define (scan vars vals) 
+      (cond ((null? vars) (add-binding-to-frame! var val frame)) 
+            ((eq? var (car vars)) (set-car! vals val)) 
+            (else (scan (cdr vars) (cdr vals)))))
+    (scan (frame-variables frame) (frame-values frame))))
 
 (define (primitive-procedure? proc) (tagged-list? proc 'primitive))
 (define (primitive-implementation proc) (cadr proc))
@@ -168,19 +180,28 @@
                                    (list '+ +)
                                    (list '- -)
                                    (list '* *)
-                                   (list '/ /)))
-(define (primitive-procedure-names) (map car primitive-procedures))
+                                   (list '/ /)
+                                   (list '= =)))
+(define (primitive-procedure-names) 
+  (map car primitive-procedures))
+
 (define (primitive-procedure-objects)
-  (map (lambda (proc) (list 'primitive (cadr proc)))
+  (map (lambda (proc) 
+         (list 'primitive (cadr proc)))
        primitive-procedures))
 
-(define (apply-primitive-procedure proc args) (apply (primitive-implementation proc) args))
+(define (apply-primitive-procedure proc args) 
+  (apply (primitive-implementation proc) args))
 
-(define (setup-environment) (let ((initial-env
-                                   (extend-environment (primitive-procedure-names) (primitive-procedure-objects)
-                                                       the-empty-environment))) (define-variable! 'true true initial-env)
-                              (define-variable! 'false false initial-env)
-                              initial-env))
+(define (setup-environment) 
+  (let ((initial-env
+          (extend-environment 
+          (primitive-procedure-names) 
+          (primitive-procedure-objects)
+          the-empty-environment))) 
+    (define-variable! 'true true initial-env)
+    (define-variable! 'false false initial-env)
+    initial-env))
 (define the-global-environment (setup-environment))
 
 ;(myeval '(define (make-adder increment)
